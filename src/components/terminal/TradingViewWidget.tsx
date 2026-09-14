@@ -88,11 +88,11 @@ export const TradingViewWidget: React.FC<TradingViewWidgetProps> = ({
               >
                 {activeLens === "STOCK" ? ticker : cryptoTradingViewSymbol.replace("BITGET:", "")}
               </span>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#FF6B00]/10 text-[#FF6B00] border border-[#FF6B00]/20 font-bold">
+              <span className="text-xs font-mono px-2 py-0.5 rounded-md bg-[#FF6B00]/15 text-[#FF6B00] border border-[#FF6B00]/30 font-bold">
                 {activeLens === "STOCK" ? "US Equity Lens" : "Correlated Crypto Lens"}
               </span>
             </div>
-            <p className="text-[11px] text-stone-400 font-mono">
+            <p className="text-xs text-stone-400 font-mono mt-0.5">
               {activeLens === "STOCK" ? name : "Bitget UTA 24/7 Futures Anchor"}
             </p>
           </div>
@@ -103,19 +103,19 @@ export const TradingViewWidget: React.FC<TradingViewWidgetProps> = ({
           {/* Dual Lens Button */}
           <button
             onClick={() => setActiveLens((prev) => (prev === "STOCK" ? "CRYPTO" : "STOCK"))}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all border shadow-xs ${
+            className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-mono font-bold transition-all border shadow-xs cursor-pointer ${
               activeLens === "STOCK"
                 ? "bg-[#FF6B00] text-white border-[#FF6B00] hover:bg-[#EA580C]"
                 : "bg-emerald-600 text-white border-emerald-600 hover:bg-emerald-500"
             }`}
           >
-            <ArrowLeftRight className="w-3.5 h-3.5" />
+            <ArrowLeftRight className="w-4 h-4" />
             <span>Switch to {activeLens === "STOCK" ? "Crypto" : "Stock"} Lens</span>
           </button>
 
           {/* Timeframe selector */}
           <div
-            className={`hidden sm:flex items-center rounded-lg p-0.5 border text-[11px] font-mono ${
+            className={`hidden sm:flex items-center rounded-lg p-0.5 border text-xs font-mono ${
               isDark ? "bg-[#1A1816] border-stone-800" : "bg-stone-100 border-stone-200"
             }`}
           >
@@ -123,7 +123,7 @@ export const TradingViewWidget: React.FC<TradingViewWidgetProps> = ({
               <button
                 key={tf}
                 onClick={() => setTimeframe(tf)}
-                className={`px-2 py-0.5 rounded transition-colors ${
+                className={`px-2.5 py-1 rounded transition-colors cursor-pointer ${
                   timeframe === tf
                     ? "bg-[#FF6B00] text-white font-bold"
                     : isDark
@@ -140,28 +140,28 @@ export const TradingViewWidget: React.FC<TradingViewWidgetProps> = ({
 
       {/* Quote Banner */}
       <div
-        className={`px-4 py-2 border-b flex items-center justify-between text-xs font-mono ${
+        className={`px-4 sm:px-6 py-2.5 border-b flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm font-mono ${
           isDark ? "bg-[#0E0C0A] border-stone-800" : "bg-[#FDFBF7] border-orange-100"
         }`}
       >
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-5">
           <div>
-            <span className="text-stone-400 text-[10px] uppercase block">Native Close</span>
-            <span className={`font-semibold tabular-nums ${isDark ? "text-stone-300" : "text-stone-800"}`}>
+            <span className="text-stone-400 text-xs uppercase font-bold block">Native Close</span>
+            <span className={`font-bold text-sm sm:text-base tabular-nums ${isDark ? "text-stone-200" : "text-stone-800"}`}>
               ${fridayClose.toFixed(2)}
             </span>
           </div>
           <div>
-            <span className="text-stone-400 text-[10px] uppercase block">Live 24/7 rToken</span>
-            <span className="font-bold tabular-nums text-[#FF6B00]">
+            <span className="text-stone-400 text-xs uppercase font-bold block">Live 24/7 rToken</span>
+            <span className="font-bold text-sm sm:text-base tabular-nums text-[#FF6B00]">
               ${currentPrice.toFixed(2)}
             </span>
           </div>
           <div>
-            <span className="text-stone-400 text-[10px] uppercase block">Cross-Market Gap</span>
+            <span className="text-stone-400 text-xs uppercase font-bold block">Cross-Market Gap</span>
             <span
-              className={`font-bold tabular-nums ${
-                gapPercent >= 0 ? "text-emerald-600" : "text-rose-600"
+              className={`font-bold text-sm sm:text-base tabular-nums ${
+                gapPercent >= 0 ? "text-emerald-500" : "text-rose-500"
               }`}
             >
               {gapPercent >= 0 ? `+${gapPercent.toFixed(2)}%` : `${gapPercent.toFixed(2)}%`}
@@ -169,9 +169,9 @@ export const TradingViewWidget: React.FC<TradingViewWidgetProps> = ({
           </div>
         </div>
 
-        <div className="flex items-center space-x-2 text-[11px]">
-          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-600 border border-emerald-500/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1 animate-pulse" />
+        <div className="flex items-center space-x-2">
+          <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-500 border border-emerald-500/30">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 mr-1.5 animate-pulse" />
             Live Dual-Lens Feed
           </span>
         </div>

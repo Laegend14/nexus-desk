@@ -40,15 +40,15 @@ export const DualFearGreed: React.FC<DualFearGreedProps> = ({
           isDark ? "border-stone-800" : "border-orange-100"
         }`}
       >
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2.5">
           <Gauge className="w-4 h-4 text-[#FF6B00]" />
-          <h2 className={`text-sm font-semibold tracking-tight ${isDark ? "text-white" : "text-stone-900"}`}>
+          <h2 className={`text-sm sm:text-base font-bold tracking-tight ${isDark ? "text-white" : "text-stone-900"}`}>
             Dual Cross-Asset Sentiment Matrix
           </h2>
         </div>
         <span
-          className={`text-[10px] font-mono px-2 py-0.5 rounded font-bold ${
-            isDark ? "bg-stone-800 text-stone-300 border border-stone-700" : "bg-orange-50 text-orange-800 border border-orange-200"
+          className={`text-xs font-mono px-2.5 py-1 rounded-md font-bold ${
+            isDark ? "bg-stone-800 text-stone-200 border border-stone-700" : "bg-orange-50 text-orange-900 border border-orange-200"
           }`}
         >
           24/7 Macro Pulse
@@ -59,78 +59,78 @@ export const DualFearGreed: React.FC<DualFearGreedProps> = ({
       <div className="p-4 grid grid-cols-2 gap-4">
         {/* Crypto Gauge */}
         <div
-          className={`p-3.5 rounded-lg border flex flex-col items-center text-center ${
+          className={`p-4 rounded-xl border flex flex-col items-center text-center ${
             isDark ? "bg-[#1A1816] border-stone-800" : "bg-stone-50 border-stone-200"
           }`}
         >
-          <div className="flex items-center space-x-1.5 text-stone-400 text-[11px] font-mono uppercase tracking-wider mb-2">
-            <Flame className="w-3.5 h-3.5 text-[#F7931A]" />
+          <div className="flex items-center space-x-1.5 text-stone-400 text-xs font-mono uppercase tracking-wider mb-2 font-bold">
+            <Flame className="w-4 h-4 text-[#F7931A]" />
             <span>Crypto Sentiment</span>
           </div>
 
           <div className="relative flex items-center justify-center my-1">
-            <span className="text-3xl font-extrabold font-mono tabular-nums text-[#FF6B00]">
+            <span className="text-3xl sm:text-4xl font-extrabold font-mono tabular-nums text-[#FF6B00]">
               {cryptoIndex}
             </span>
-            <span className="text-xs text-stone-400 font-mono ml-0.5">/100</span>
+            <span className="text-xs sm:text-sm text-stone-400 font-mono ml-0.5">/100</span>
           </div>
 
           <span
-            className={`text-xs font-mono font-bold px-2 py-0.5 rounded mt-1 ${cryptoSent.bg} ${cryptoSent.color}`}
+            className={`text-xs sm:text-sm font-mono font-bold px-3 py-1 rounded-md mt-1 ${cryptoSent.bg} ${cryptoSent.color}`}
           >
             {cryptoSent.label}
           </span>
 
-          <div className="w-full bg-stone-300/40 dark:bg-stone-700/50 rounded-full h-1.5 mt-3 overflow-hidden">
+          <div className="w-full bg-stone-300/40 dark:bg-stone-700/50 rounded-full h-2 mt-3.5 overflow-hidden">
             <div
-              className="bg-[#FF6B00] h-1.5 rounded-full transition-all duration-500"
+              className="bg-[#FF6B00] h-2 rounded-full transition-all duration-500"
               style={{ width: `${cryptoIndex}%` }}
             />
           </div>
-          <span className="text-[10px] text-stone-400 font-mono mt-1">Bitget Futures & On-Chain Vol</span>
+          <span className="text-xs text-stone-400 font-mono mt-2">Bitget Futures & On-Chain Vol</span>
         </div>
 
         {/* US Equity Gauge */}
         <div
-          className={`p-3.5 rounded-lg border flex flex-col items-center text-center ${
+          className={`p-4 rounded-xl border flex flex-col items-center text-center ${
             isDark ? "bg-[#1A1816] border-stone-800" : "bg-stone-50 border-stone-200"
           }`}
         >
-          <div className="flex items-center space-x-1.5 text-stone-400 text-[11px] font-mono uppercase tracking-wider mb-2">
-            <Sparkles className="w-3.5 h-3.5 text-[#0052FF]" />
+          <div className="flex items-center space-x-1.5 text-stone-400 text-xs font-mono uppercase tracking-wider mb-2 font-bold">
+            <Sparkles className="w-4 h-4 text-[#0052FF]" />
             <span>US Equities Sentiment</span>
           </div>
 
           <div className="relative flex items-center justify-center my-1">
-            <span className={`text-3xl font-extrabold font-mono tabular-nums ${isDark ? "text-white" : "text-stone-900"}`}>
+            <span className={`text-3xl sm:text-4xl font-extrabold font-mono tabular-nums ${isDark ? "text-white" : "text-stone-900"}`}>
               {stockIndex}
             </span>
-            <span className="text-xs text-stone-400 font-mono ml-0.5">/100</span>
+            <span className="text-xs sm:text-sm text-stone-400 font-mono ml-0.5">/100</span>
           </div>
 
           <span
-            className={`text-xs font-mono font-bold px-2 py-0.5 rounded mt-1 ${stockSent.bg} ${stockSent.color}`}
+            className={`text-xs sm:text-sm font-mono font-bold px-3 py-1 rounded-md mt-1 ${stockSent.bg} ${stockSent.color}`}
           >
             {stockSent.label}
           </span>
 
-          <div className="w-full bg-stone-300/40 dark:bg-stone-700/50 rounded-full h-1.5 mt-3 overflow-hidden">
+          <div className="w-full bg-stone-300/40 dark:bg-stone-700/50 rounded-full h-2 mt-3.5 overflow-hidden">
             <div
-              className="bg-emerald-500 h-1.5 rounded-full transition-all duration-500"
+              className="bg-emerald-500 h-2 rounded-full transition-all duration-500"
               style={{ width: `${stockIndex}%` }}
             />
           </div>
-          <span className="text-[10px] text-stone-400 font-mono mt-1">CBOE VIX & Put/Call Ratio</span>
+          <span className="text-xs text-stone-400 font-mono mt-2">CBOE VIX & Put/Call Ratio</span>
         </div>
       </div>
 
       {/* Cross-Asset Divergence Diagnostic */}
       <div
-        className={`p-3 border-t text-xs font-mono flex items-center justify-between ${
+        className={`p-3.5 border-t text-xs sm:text-sm font-mono flex flex-wrap items-center justify-between gap-2 ${
           isDark ? "bg-[#0E0C0A] border-stone-800 text-stone-300" : "bg-[#FDFBF7] border-orange-100 text-stone-700"
         }`}
       >
-        <span className="text-[11px] text-stone-400">Divergence Vector:</span>
+        <span className="text-xs text-stone-400 font-bold uppercase">Divergence Vector:</span>
         <span className="font-bold text-[#FF6B00]">
           {delta > 0
             ? `Crypto leading Equities by +${delta} pts (Risk-On lead)`

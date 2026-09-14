@@ -125,24 +125,24 @@ export const InstitutionalTradeTicket: React.FC<InstitutionalTradeTicketProps> =
           <div>
             <div className="flex items-center space-x-1.5">
               <span
-                className={`font-mono font-bold text-xs ${
+                className={`font-mono font-bold text-sm sm:text-base ${
                   isDark ? "text-white" : "text-stone-900"
                 }`}
               >
                 {ticker}
               </span>
-              <span className="text-[10px] font-mono text-[#FF6B00] font-semibold uppercase">
+              <span className="text-xs font-mono text-[#FF6B00] font-bold uppercase">
                 Trade Ticket
               </span>
             </div>
-            <div className={`text-[11px] truncate ${isDark ? "text-stone-400" : "text-stone-500"}`}>
+            <div className={`text-xs truncate font-sans ${isDark ? "text-stone-400" : "text-stone-500"}`}>
               {name}
             </div>
           </div>
         </div>
 
         <div
-          className={`flex items-center space-x-1 p-0.5 rounded border text-[10px] font-mono ${
+          className={`flex items-center space-x-1 p-0.5 rounded-lg border text-xs font-mono ${
             isDark ? "bg-[#1A1816] border-stone-800" : "bg-stone-100 border-stone-200"
           }`}
         >
@@ -150,7 +150,7 @@ export const InstitutionalTradeTicket: React.FC<InstitutionalTradeTicketProps> =
             <button
               key={ot}
               onClick={() => setOrderType(ot)}
-              className={`px-2 py-0.5 rounded transition-colors ${
+              className={`px-2.5 py-1 rounded transition-colors cursor-pointer ${
                 orderType === ot
                   ? "bg-[#FF6B00] text-white font-bold"
                   : isDark
@@ -166,34 +166,34 @@ export const InstitutionalTradeTicket: React.FC<InstitutionalTradeTicketProps> =
 
       {/* Ticket Matrix */}
       <div
-        className={`py-3 space-y-3 font-mono text-xs border-b ${
+        className={`py-3.5 space-y-3 font-mono text-xs sm:text-sm border-b ${
           isDark ? "border-stone-800" : "border-orange-100"
         }`}
       >
         {/* Vector Target */}
         <div
-          className={`p-2.5 rounded border flex items-center justify-between ${
+          className={`p-3 rounded-lg border flex items-center justify-between ${
             isDark
               ? "bg-[#1A1816] border-stone-800"
               : "bg-orange-50/70 border-orange-200 text-stone-800"
           }`}
         >
-          <span className="text-[11px] text-stone-500 font-medium">Position Vector:</span>
-          <span className="text-[#FF6B00] font-bold flex items-center">
-            LONG {ticker} <ArrowUpRight className="w-3.5 h-3.5 ml-0.5" />
+          <span className="text-xs text-stone-400 font-bold uppercase">Position Vector:</span>
+          <span className="text-[#FF6B00] font-bold text-sm flex items-center">
+            LONG {ticker} <ArrowUpRight className="w-4 h-4 ml-0.5" />
           </span>
         </div>
 
         {/* Pricing & Sizing Row */}
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-2.5">
           <div
-            className={`p-2.5 rounded border ${
+            className={`p-3 rounded-lg border ${
               isDark ? "bg-[#1A1816] border-stone-800" : "bg-stone-50 border-stone-200"
             }`}
           >
-            <div className="text-[10px] text-stone-400 uppercase">Entry Price</div>
+            <div className="text-xs text-stone-400 uppercase font-bold">Entry Price</div>
             <div
-              className={`font-bold text-sm tabular-nums mt-0.5 ${
+              className={`font-bold text-base sm:text-lg tabular-nums mt-0.5 ${
                 isDark ? "text-white" : "text-stone-900"
               }`}
             >
@@ -201,12 +201,12 @@ export const InstitutionalTradeTicket: React.FC<InstitutionalTradeTicketProps> =
             </div>
           </div>
           <div
-            className={`p-2.5 rounded border ${
+            className={`p-3 rounded-lg border ${
               isDark ? "bg-[#1A1816] border-stone-800" : "bg-stone-50 border-stone-200"
             }`}
           >
-            <div className="text-[10px] text-stone-400 uppercase">Notional Value</div>
-            <div className="text-[#FF6B00] font-bold text-sm tabular-nums mt-0.5">
+            <div className="text-xs text-stone-400 uppercase font-bold">Notional Value</div>
+            <div className="text-[#FF6B00] font-bold text-base sm:text-lg tabular-nums mt-0.5">
               ${notionalValue}
             </div>
           </div>

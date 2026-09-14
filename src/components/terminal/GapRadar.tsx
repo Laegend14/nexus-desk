@@ -67,15 +67,15 @@ export const GapRadar: React.FC<GapRadarProps> = ({
         <table className="w-full text-left font-mono text-xs">
           <thead>
             <tr
-              className={`text-[10px] uppercase tracking-wider border-b ${
-                isDark ? "text-stone-500 border-stone-800" : "text-stone-400 border-stone-200"
+              className={`text-xs uppercase tracking-wider border-b font-bold ${
+                isDark ? "text-stone-400 border-stone-800" : "text-stone-500 border-stone-200"
               }`}
             >
-              <th className="pb-2 font-medium">Asset</th>
-              <th className="pb-2 font-medium text-right">Fri Close</th>
-              <th className="pb-2 font-medium text-right">24/7 Price</th>
-              <th className="pb-2 font-medium text-right">Spread</th>
-              <th className="pb-2 font-medium text-right hidden sm:table-cell">24h Vol</th>
+              <th className="pb-2.5 font-bold">Asset</th>
+              <th className="pb-2.5 font-bold text-right">Fri Close</th>
+              <th className="pb-2.5 font-bold text-right">24/7 Price</th>
+              <th className="pb-2.5 font-bold text-right">Spread</th>
+              <th className="pb-2.5 font-bold text-right hidden sm:table-cell">24h Vol</th>
             </tr>
           </thead>
           <tbody className={isDark ? "divide-y divide-stone-800/80" : "divide-y divide-stone-100"}>
@@ -95,21 +95,21 @@ export const GapRadar: React.FC<GapRadarProps> = ({
                   className={`cursor-pointer transition-colors ${
                     isSelected
                       ? isDark
-                        ? "bg-[#241F1A] border-l-3 border-l-[#FF6B00] font-semibold"
-                        : "bg-orange-50/80 border-l-3 border-l-[#FF6B00] font-semibold"
+                        ? "bg-[#241F1A] border-l-4 border-l-[#FF6B00] font-semibold"
+                        : "bg-orange-50/90 border-l-4 border-l-[#FF6B00] font-semibold"
                       : isDark
                       ? "hover:bg-[#1A1816] text-stone-300"
-                      : "hover:bg-orange-50/30 text-stone-700"
+                      : "hover:bg-orange-50/40 text-stone-700"
                   }`}
                 >
                   {/* Asset Column with Official Stock Logo */}
-                  <td className="py-2.5 pr-2 pl-1.5">
-                    <div className="flex items-center space-x-2.5">
-                      <StockLogo ticker={ticker} size={24} />
+                  <td className="py-3 pr-2 pl-2">
+                    <div className="flex items-center space-x-3">
+                      <StockLogo ticker={ticker} size={28} />
                       <div>
-                        <div className="flex items-center space-x-1">
+                        <div className="flex items-center space-x-1.5">
                           <span
-                            className={`font-bold ${
+                            className={`font-mono font-bold text-sm sm:text-base ${
                               isSelected
                                 ? "text-[#FF6B00]"
                                 : isDark
@@ -120,11 +120,11 @@ export const GapRadar: React.FC<GapRadarProps> = ({
                             {ticker}
                           </span>
                           {isSelected && (
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B00]" />
+                            <span className="w-2 h-2 rounded-full bg-[#FF6B00] shadow-[0_0_6px_rgba(255,107,0,0.8)]" />
                           )}
                         </div>
                         <div
-                          className={`text-[10px] truncate max-w-[90px] ${
+                          className={`text-xs truncate max-w-[120px] font-sans ${
                             isDark ? "text-stone-400" : "text-stone-500"
                           }`}
                         >
@@ -136,7 +136,7 @@ export const GapRadar: React.FC<GapRadarProps> = ({
 
                   {/* Friday Cash Close */}
                   <td
-                    className={`py-2.5 text-right tabular-nums ${
+                    className={`py-3 text-right tabular-nums text-xs sm:text-sm font-medium ${
                       isDark ? "text-stone-400" : "text-stone-600"
                     }`}
                   >
@@ -145,7 +145,7 @@ export const GapRadar: React.FC<GapRadarProps> = ({
 
                   {/* 24/7 On-chain Price */}
                   <td
-                    className={`py-2.5 text-right font-semibold tabular-nums ${
+                    className={`py-3 text-right font-bold tabular-nums text-xs sm:text-sm ${
                       isDark ? "text-white" : "text-stone-900"
                     }`}
                   >
@@ -153,9 +153,9 @@ export const GapRadar: React.FC<GapRadarProps> = ({
                   </td>
 
                   {/* Spread / Implied Gap */}
-                  <td className="py-2.5 text-right">
+                  <td className="py-3 text-right">
                     <span
-                      className={`inline-flex items-center px-1.5 py-0.5 rounded text-[11px] tabular-nums font-semibold ${
+                      className={`inline-flex items-center px-2 py-0.5 rounded-md text-xs tabular-nums font-bold ${
                         isPositive
                           ? isDark
                             ? "bg-emerald-950/40 text-emerald-400 border border-emerald-800/40"
@@ -165,12 +165,6 @@ export const GapRadar: React.FC<GapRadarProps> = ({
                           : "bg-rose-50 text-rose-700 border border-rose-200"
                       }`}
                     >
-                      {isPositive ? (
-                        <ArrowUpRight className="w-3 h-3 mr-0.5" />
-                      ) : (
-                        <ArrowDownRight className="w-3 h-3 mr-0.5" />
-                      )}
-                      {isPositive ? "+" : ""}
                       {gapPct}%
                     </span>
                   </td>

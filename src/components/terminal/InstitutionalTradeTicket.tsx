@@ -108,54 +108,54 @@ export const InstitutionalTradeTicket: React.FC<InstitutionalTradeTicketProps> =
 
   return (
     <div
-      className={`w-full rounded-xl p-4 flex flex-col font-sans transition-colors duration-200 ${
+      className={`w-full rounded-2xl p-4 sm:p-5 flex flex-col font-sans transition-colors duration-200 border ${
         isDark
-          ? "bg-[#141210] border border-stone-800 shadow-md"
-          : "bg-white border border-orange-200/90 shadow-sm"
+          ? "bg-[#1E1B18] border-stone-700/80 shadow-xl"
+          : "bg-white border-2 border-orange-300 shadow-[0_8px_30px_-6px_rgba(255,107,0,0.15)]"
       }`}
     >
       {/* Header with Asset Badge */}
       <div
-        className={`flex items-center justify-between pb-3 border-b ${
-          isDark ? "border-stone-800" : "border-orange-100"
+        className={`flex items-center justify-between pb-3.5 border-b ${
+          isDark ? "border-stone-700" : "border-orange-200"
         }`}
       >
-        <div className="flex items-center space-x-2.5">
-          <StockLogo ticker={ticker} size={30} />
+        <div className="flex items-center space-x-3">
+          <StockLogo ticker={ticker} size={32} />
           <div>
-            <div className="flex items-center space-x-1.5">
+            <div className="flex items-center space-x-2">
               <span
-                className={`font-mono font-bold text-sm sm:text-base ${
-                  isDark ? "text-white" : "text-stone-900"
+                className={`font-mono font-extrabold text-base sm:text-lg ${
+                  isDark ? "text-white" : "text-stone-950"
                 }`}
               >
                 {ticker}
               </span>
-              <span className="text-xs font-mono text-[#FF6B00] font-bold uppercase">
+              <span className="text-xs sm:text-sm font-mono text-[#FF6B00] font-extrabold uppercase">
                 Trade Ticket
               </span>
             </div>
-            <div className={`text-xs truncate font-sans ${isDark ? "text-stone-400" : "text-stone-500"}`}>
+            <div className={`text-xs sm:text-sm truncate font-sans font-medium ${isDark ? "text-stone-400" : "text-stone-600"}`}>
               {name}
             </div>
           </div>
         </div>
 
         <div
-          className={`flex items-center space-x-1 p-0.5 rounded-lg border text-xs font-mono ${
-            isDark ? "bg-[#1A1816] border-stone-800" : "bg-stone-100 border-stone-200"
+          className={`flex items-center space-x-1 p-0.5 rounded-lg border text-xs sm:text-sm font-mono font-bold ${
+            isDark ? "bg-[#181512] border-stone-700" : "bg-white/80 border-orange-300 shadow-2xs"
           }`}
         >
           {(["MARKET", "LIMIT"] as const).map((ot) => (
             <button
               key={ot}
               onClick={() => setOrderType(ot)}
-              className={`px-2.5 py-1 rounded transition-colors cursor-pointer ${
+              className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${
                 orderType === ot
-                  ? "bg-[#FF6B00] text-white font-bold"
+                  ? "bg-[#FF6B00] text-white shadow-xs"
                   : isDark
                   ? "text-stone-400 hover:text-white"
-                  : "text-stone-600 hover:text-stone-900"
+                  : "text-stone-700 hover:text-stone-950"
               }`}
             >
               {ot}
@@ -166,59 +166,67 @@ export const InstitutionalTradeTicket: React.FC<InstitutionalTradeTicketProps> =
 
       {/* Ticket Matrix */}
       <div
-        className={`py-3.5 space-y-3 font-mono text-xs sm:text-sm border-b ${
-          isDark ? "border-stone-800" : "border-orange-100"
+        className={`py-4 space-y-3.5 font-mono text-sm border-b ${
+          isDark ? "border-stone-700" : "border-orange-200"
         }`}
       >
         {/* Vector Target */}
         <div
-          className={`p-3 rounded-lg border flex items-center justify-between ${
+          className={`p-3.5 rounded-xl border flex items-center justify-between ${
             isDark
-              ? "bg-[#1A1816] border-stone-800"
-              : "bg-orange-50/70 border-orange-200 text-stone-800"
+              ? "bg-[#282420] border-stone-700"
+              : "bg-orange-100/70 border-orange-300 text-stone-950 shadow-2xs"
           }`}
         >
-          <span className="text-xs text-stone-400 font-bold uppercase">Position Vector:</span>
-          <span className="text-[#FF6B00] font-bold text-sm flex items-center">
+          <span className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 font-bold uppercase">
+            Position Vector:
+          </span>
+          <span className="text-[#FF6B00] font-extrabold text-sm sm:text-base flex items-center">
             LONG {ticker} <ArrowUpRight className="w-4 h-4 ml-0.5" />
           </span>
         </div>
 
         {/* Pricing & Sizing Row */}
-        <div className="grid grid-cols-2 gap-2.5">
+        <div className="grid grid-cols-2 gap-3">
           <div
-            className={`p-3 rounded-lg border ${
-              isDark ? "bg-[#1A1816] border-stone-800" : "bg-stone-50 border-stone-200"
+            className={`p-3.5 rounded-xl border ${
+              isDark ? "bg-[#24201D] border-stone-700" : "bg-orange-50/80 border-orange-200"
             }`}
           >
-            <div className="text-xs text-stone-400 uppercase font-bold">Entry Price</div>
+            <div className="text-xs sm:text-sm text-stone-500 dark:text-stone-400 uppercase font-bold">
+              Entry Price
+            </div>
             <div
-              className={`font-bold text-base sm:text-lg tabular-nums mt-0.5 ${
-                isDark ? "text-white" : "text-stone-900"
+              className={`font-extrabold text-base sm:text-xl tabular-nums mt-0.5 ${
+                isDark ? "text-white" : "text-stone-950"
               }`}
             >
               ${price.toFixed(2)}
             </div>
           </div>
           <div
-            className={`p-3 rounded-lg border ${
-              isDark ? "bg-[#1A1816] border-stone-800" : "bg-stone-50 border-stone-200"
+            className={`p-3.5 rounded-xl border ${
+              isDark ? "bg-[#24201D] border-stone-700" : "bg-orange-50/80 border-orange-200"
             }`}
           >
-            <div className="text-xs text-stone-400 uppercase font-bold">Notional Value</div>
-            <div className="text-[#FF6B00] font-bold text-base sm:text-lg tabular-nums mt-0.5">
+            <div className="text-xs sm:text-sm text-stone-500 dark:text-stone-400 uppercase font-bold">
+              Notional Value
+            </div>
+            <div className="text-[#FF6B00] font-extrabold text-base sm:text-xl tabular-nums mt-0.5">
               ${notionalValue}
             </div>
           </div>
         </div>
 
         {/* Sizing Slider */}
-        <div className="pt-1">
-          <div className="flex items-center justify-between text-[11px] mb-1.5">
-            <span className={isDark ? "text-stone-400" : "text-stone-600"}>Order Quantity:</span>
+        <div className="pt-1.5">
+          <div className="flex items-center justify-between text-xs sm:text-sm mb-2">
+            <span className={isDark ? "text-stone-300 font-medium" : "text-stone-700 font-bold"}>
+              Order Quantity:
+            </span>
             <span
-              className={`font-bold tabular-nums ${
-                isDark ? "text-white" : "text-stone-900"
+              className={`font-extrabold tabular-nums text-sm sm:text-base ${
+                isDark ? "text-white" : "text-stone-950"
               }`}
             >
               {sizeShares} Shares
@@ -230,18 +238,18 @@ export const InstitutionalTradeTicket: React.FC<InstitutionalTradeTicketProps> =
             max="100"
             value={sizeShares}
             onChange={(e) => setSizeShares(Number(e.target.value))}
-            className="w-full h-1 rounded-lg appearance-none cursor-pointer accent-[#FF6B00]"
+            className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-[#FF6B00]"
           />
         </div>
 
         {/* TP / SL Dual Parameters */}
-        <div className="grid grid-cols-2 gap-2 pt-1">
+        <div className="grid grid-cols-2 gap-3 pt-1">
           <div>
-            <div className="flex justify-between text-[10px] mb-1">
-              <span className={isDark ? "text-emerald-400 font-semibold" : "text-emerald-700 font-semibold"}>
+            <div className="flex justify-between text-xs sm:text-sm mb-1.5 font-bold">
+              <span className={isDark ? "text-emerald-400" : "text-emerald-800"}>
                 TP (+{takeProfitPct}%):
               </span>
-              <span className="tabular-nums font-bold text-emerald-600">${tpTargetPrice}</span>
+              <span className="tabular-nums text-emerald-600 dark:text-emerald-400">${tpTargetPrice}</span>
             </div>
             <input
               type="range"
@@ -250,15 +258,15 @@ export const InstitutionalTradeTicket: React.FC<InstitutionalTradeTicketProps> =
               step="0.1"
               value={takeProfitPct}
               onChange={(e) => setTakeProfitPct(Number(e.target.value))}
-              className="w-full h-1 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+              className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-emerald-500"
             />
           </div>
           <div>
-            <div className="flex justify-between text-[10px] mb-1">
-              <span className={isDark ? "text-rose-400 font-semibold" : "text-rose-700 font-semibold"}>
+            <div className="flex justify-between text-xs sm:text-sm mb-1.5 font-bold">
+              <span className={isDark ? "text-rose-400" : "text-rose-800"}>
                 SL (-{stopLossPct}%):
               </span>
-              <span className="tabular-nums font-bold text-rose-600">${slTargetPrice}</span>
+              <span className="tabular-nums text-rose-600 dark:text-rose-400">${slTargetPrice}</span>
             </div>
             <input
               type="range"
@@ -267,25 +275,25 @@ export const InstitutionalTradeTicket: React.FC<InstitutionalTradeTicketProps> =
               step="0.1"
               value={stopLossPct}
               onChange={(e) => setStopLossPct(Number(e.target.value))}
-              className="w-full h-1 rounded-lg appearance-none cursor-pointer accent-rose-500"
+              className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-rose-500"
             />
           </div>
         </div>
 
         {/* Risk & Slippage Guard Bar */}
         <div
-          className={`p-2 rounded border text-[10px] flex items-center justify-between ${
+          className={`p-2.5 rounded-lg border text-xs sm:text-sm flex items-center justify-between font-bold ${
             isDark
-              ? "bg-[#1A1816] border-stone-800 text-stone-400"
-              : "bg-stone-50 border-stone-200 text-stone-600"
+              ? "bg-[#181512] border-stone-700 text-stone-300"
+              : "bg-orange-50 border-orange-200 text-stone-800"
           }`}
         >
-          <span className="flex items-center font-medium">
-            <Lock className="w-3 h-3 mr-1 text-[#FF6B00]" /> Max Slippage Limit:
+          <span className="flex items-center">
+            <Lock className="w-3.5 h-3.5 mr-1 text-[#FF6B00]" /> Max Slippage Limit:
           </span>
           <span
-            className={`font-bold tabular-nums ${
-              isDark ? "text-white" : "text-stone-900"
+            className={`font-extrabold tabular-nums ${
+              isDark ? "text-white" : "text-stone-950"
             }`}
           >
             {slippageTolerance * 100}%
@@ -294,13 +302,13 @@ export const InstitutionalTradeTicket: React.FC<InstitutionalTradeTicketProps> =
       </div>
 
       {/* Action Buttons */}
-      <div className="pt-3 space-y-2">
+      <div className="pt-3.5 space-y-2.5">
         <button
           onClick={handleExecuteDemoOrder}
           disabled={isExecuting}
-          className="w-full py-2.5 rounded-lg bg-[#FF6B00] hover:bg-[#EA580C] text-white text-xs font-bold font-mono flex items-center justify-center space-x-1.5 transition-all shadow-md shadow-orange-500/20 active:scale-[0.98] disabled:opacity-50"
+          className="w-full py-3.5 rounded-xl bg-[#FF6B00] hover:bg-[#EA580C] text-white text-sm sm:text-base font-bold font-mono flex items-center justify-center space-x-2 transition-all shadow-md shadow-orange-500/20 active:scale-[0.98] disabled:opacity-50 cursor-pointer"
         >
-          <Zap className="w-3.5 h-3.5 fill-current" />
+          <Zap className="w-4 h-4 fill-current" />
           <span>
             {isExecuting ? "Submitting to Bitget UTA..." : `Execute Bitget Demo (${sizeShares} ${ticker})`}
           </span>
@@ -308,20 +316,20 @@ export const InstitutionalTradeTicket: React.FC<InstitutionalTradeTicketProps> =
 
         <button
           onClick={handleExportPlaybook}
-          className={`w-full py-2 rounded-lg border text-xs font-semibold font-mono flex items-center justify-center space-x-1.5 transition-colors active:scale-[0.98] ${
+          className={`w-full py-3 rounded-xl border-2 text-sm sm:text-base font-bold font-mono flex items-center justify-center space-x-2 transition-colors active:scale-[0.98] cursor-pointer ${
             isDark
-              ? "bg-[#1A1816] hover:bg-[#241F1A] text-stone-300 border-stone-800 hover:border-orange-500/40"
-              : "bg-white hover:bg-orange-50 text-stone-700 border-stone-200 hover:border-orange-300 shadow-2xs"
+              ? "bg-[#24201D] hover:bg-[#2F2923] text-stone-200 border-stone-700 hover:border-orange-500/40"
+              : "bg-white hover:bg-orange-100/70 text-stone-900 border-orange-300 shadow-2xs"
           }`}
         >
           {isExported ? (
             <>
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
+              <CheckCircle2 className="w-4 h-4 text-emerald-500" />
               <span className="text-emerald-500">Playbook JSON Generated!</span>
             </>
           ) : (
             <>
-              <Download className="w-3.5 h-3.5 text-[#FF6B00]" />
+              <Download className="w-4 h-4 text-[#FF6B00]" />
               <span>Export to Bitget Playbook</span>
             </>
           )}

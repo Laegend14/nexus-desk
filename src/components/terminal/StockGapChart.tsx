@@ -48,16 +48,16 @@ export const StockGapChart: React.FC<StockGapChartProps> = ({
 
   return (
     <div
-      className={`w-full rounded-xl p-4 flex flex-col font-sans transition-colors duration-200 ${
+      className={`w-full rounded-2xl p-4 sm:p-5 flex flex-col font-sans transition-colors duration-200 border-2 ${
         isDark
-          ? "bg-[#141210] border border-stone-800 shadow-md"
-          : "bg-white border border-orange-200/90 shadow-sm"
+          ? "bg-[#1E1B18] border-stone-700/80 shadow-md"
+          : "bg-white border-orange-300 shadow-[0_8px_30px_-6px_rgba(255,107,0,0.15)]"
       }`}
     >
       {/* Stock Header & Asset Visual */}
       <div
-        className={`flex items-center justify-between pb-3 border-b ${
-          isDark ? "border-stone-800" : "border-orange-100"
+        className={`flex items-center justify-between pb-3.5 border-b ${
+          isDark ? "border-stone-700" : "border-orange-200"
         }`}
       >
         <div className="flex items-center space-x-3">
@@ -65,30 +65,30 @@ export const StockGapChart: React.FC<StockGapChartProps> = ({
           <div>
             <div className="flex items-center space-x-2">
               <span
-                className={`font-bold tracking-tight text-base font-mono ${
-                  isDark ? "text-white" : "text-stone-900"
+                className={`font-extrabold tracking-tight text-lg font-mono ${
+                  isDark ? "text-white" : "text-stone-950"
                 }`}
               >
                 {ticker}
               </span>
               <span
-                className={`text-[11px] px-2 py-0.5 rounded font-mono ${
+                className={`text-xs px-2.5 py-0.5 rounded font-mono font-bold ${
                   isDark
-                    ? "bg-stone-800 text-stone-300 border border-stone-700"
-                    : "bg-orange-50 text-orange-800 border border-orange-200 font-medium"
+                    ? "bg-[#25211D] text-orange-400 border border-stone-700"
+                    : "bg-[#FFE9D1] text-orange-950 border border-orange-300"
                 }`}
               >
                 US Equity rToken
               </span>
               <span
-                className={`text-[11px] font-mono flex items-center font-semibold ${
+                className={`text-xs font-mono flex items-center font-bold ${
                   isDark ? "text-emerald-400" : "text-emerald-700"
                 }`}
               >
-                <ShieldCheck className="w-3 h-3 mr-1" /> 24/7 On-Chain
+                <ShieldCheck className="w-3.5 h-3.5 mr-1" /> 24/7 On-Chain
               </span>
             </div>
-            <div className={`text-xs mt-0.5 ${isDark ? "text-stone-400" : "text-stone-500"}`}>
+            <div className={`text-xs sm:text-sm font-medium mt-0.5 ${isDark ? "text-stone-300" : "text-stone-700"}`}>
               {name}
             </div>
           </div>
@@ -96,20 +96,20 @@ export const StockGapChart: React.FC<StockGapChartProps> = ({
 
         {/* Timeframe Controls */}
         <div
-          className={`flex items-center space-x-1 p-0.5 rounded-lg border text-[11px] font-mono ${
-            isDark ? "bg-[#1A1816] border-stone-800" : "bg-stone-100 border-stone-200"
+          className={`flex items-center space-x-1 p-0.5 rounded-lg border text-xs sm:text-sm font-mono font-bold ${
+            isDark ? "bg-[#181512] border-stone-700" : "bg-white/80 border-orange-300 shadow-2xs"
           }`}
         >
           {(["WEEKEND", "24H", "1W"] as const).map((tf) => (
             <button
               key={tf}
               onClick={() => setTimeframe(tf)}
-              className={`px-2.5 py-1 rounded transition-colors ${
+              className={`px-3 py-1 rounded transition-colors cursor-pointer ${
                 timeframe === tf
-                  ? "bg-[#FF6B00] text-white font-semibold"
+                  ? "bg-[#FF6B00] text-white font-extrabold"
                   : isDark
-                  ? "text-stone-400 hover:text-white"
-                  : "text-stone-600 hover:text-stone-900"
+                  ? "text-stone-300 hover:text-white"
+                  : "text-stone-700 hover:text-stone-950"
               }`}
             >
               {tf}
@@ -120,34 +120,34 @@ export const StockGapChart: React.FC<StockGapChartProps> = ({
 
       {/* Metric Cards Row */}
       <div
-        className={`grid grid-cols-4 gap-2.5 py-3 border-b font-mono ${
-          isDark ? "border-stone-800" : "border-orange-100"
+        className={`grid grid-cols-2 sm:grid-cols-4 gap-3 py-3.5 border-b font-mono ${
+          isDark ? "border-stone-700" : "border-orange-200"
         }`}
       >
-        <div className={`p-2 rounded ${isDark ? "bg-[#1A1816]" : "bg-orange-50/50"}`}>
-          <div className="text-[10px] uppercase tracking-wider text-stone-500">Fri Cash Close</div>
+        <div className={`p-3 rounded-xl border ${isDark ? "bg-[#24201D] border-stone-700" : "bg-gradient-to-b from-orange-100 to-amber-50/80 border-2 border-orange-200"}`}>
+          <div className={`text-xs uppercase font-extrabold tracking-wider ${isDark ? "text-stone-400" : "text-stone-600"}`}>Fri Cash Close</div>
           <div
-            className={`text-sm font-semibold tabular-nums mt-0.5 ${
-              isDark ? "text-stone-300" : "text-stone-700"
+            className={`text-base sm:text-lg font-extrabold tabular-nums mt-0.5 ${
+              isDark ? "text-stone-200" : "text-stone-900"
             }`}
           >
             ${fridayClose.toFixed(2)}
           </div>
         </div>
-        <div className={`p-2 rounded ${isDark ? "bg-[#1A1816]" : "bg-orange-50/50"}`}>
-          <div className="text-[10px] uppercase tracking-wider text-stone-500">Live 24/7 Price</div>
+        <div className={`p-3 rounded-xl border ${isDark ? "bg-[#24201D] border-stone-700" : "bg-gradient-to-b from-orange-100 to-amber-50/80 border-2 border-orange-200"}`}>
+          <div className={`text-xs uppercase font-extrabold tracking-wider ${isDark ? "text-stone-400" : "text-stone-600"}`}>Live 24/7 Price</div>
           <div
-            className={`text-sm font-bold tabular-nums mt-0.5 ${
-              isDark ? "text-white" : "text-stone-900"
+            className={`text-base sm:text-lg font-extrabold tabular-nums mt-0.5 ${
+              isDark ? "text-white" : "text-stone-950"
             }`}
           >
             ${rTokenPrice.toFixed(2)}
           </div>
         </div>
-        <div className={`p-2 rounded ${isDark ? "bg-[#1A1816]" : "bg-orange-50/50"}`}>
-          <div className="text-[10px] uppercase tracking-wider text-stone-500">Weekend Spread</div>
+        <div className={`p-3 rounded-xl border ${isDark ? "bg-[#24201D] border-stone-700" : "bg-gradient-to-b from-orange-100 to-amber-50/80 border-2 border-orange-200"}`}>
+          <div className={`text-xs uppercase font-extrabold tracking-wider ${isDark ? "text-stone-400" : "text-stone-600"}`}>Weekend Spread</div>
           <div
-            className={`text-sm font-bold tabular-nums mt-0.5 ${
+            className={`text-base sm:text-lg font-extrabold tabular-nums mt-0.5 ${
               isPositive
                 ? isDark
                   ? "text-emerald-400"
@@ -161,11 +161,11 @@ export const StockGapChart: React.FC<StockGapChartProps> = ({
             {gapPercent}%
           </div>
         </div>
-        <div className={`p-2 rounded ${isDark ? "bg-[#1A1816]" : "bg-orange-50/50"}`}>
-          <div className="text-[10px] uppercase tracking-wider text-[#FF6B00] font-semibold">
+        <div className={`p-3 rounded-xl border ${isDark ? "bg-[#24201D] border-stone-700" : "bg-gradient-to-b from-orange-100 to-amber-50/80 border-2 border-orange-200"}`}>
+          <div className="text-xs uppercase tracking-wider text-[#FF6B00] font-extrabold">
             Implied Mon Gap
           </div>
-          <div className="text-sm font-bold text-[#FF6B00] tabular-nums mt-0.5">
+          <div className="text-base sm:text-lg font-extrabold text-[#FF6B00] tabular-nums mt-0.5">
             {isPositive ? "+" : ""}${priceDiff.toFixed(2)}
           </div>
         </div>

@@ -82,7 +82,9 @@ export default function Home() {
   return (
     <div
       className={`min-h-screen flex flex-col font-sans transition-colors duration-200 ${
-        isDark ? "bg-[#0C0A09] text-[#FAF8F5]" : "bg-[#FDFBF7] text-stone-900"
+        isDark
+          ? "bg-[#191613] text-[#FAF8F5]"
+          : "bg-[#FFF5EA] text-stone-950 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-orange-200/50 via-[#FFF6EC] to-[#FFEDD5]"
       }`}
     >
       {/* Top Header with Seamless View Switcher & Theme Switcher */}
@@ -112,91 +114,95 @@ export default function Home() {
 
           {/* Desktop Workstation Sub-Header Toolbar (Layout Switcher) */}
           <div
-            className={`hidden lg:flex items-center justify-between px-6 py-2 border-b text-xs font-mono transition-colors ${
-              isDark ? "bg-[#0E0C0A] border-stone-800 text-stone-400" : "bg-[#FAF7F2] border-orange-100 text-stone-600"
+            className={`hidden lg:flex items-center justify-between px-6 py-2.5 border-b text-sm font-mono transition-colors ${
+              isDark
+                ? "bg-[#221E1A] border-stone-700/80 text-stone-200"
+                : "bg-[#FFE9D1] border-orange-300 text-stone-900 shadow-2xs"
             }`}
           >
-            <div className="flex items-center space-x-2">
-              <span className="font-bold text-stone-300 dark:text-stone-300 uppercase tracking-wider">
+            <div className="flex items-center space-x-2.5">
+              <span className="font-bold uppercase tracking-wider text-xs sm:text-sm">
                 Workstation Layout:
               </span>
               <div
                 className={`flex items-center space-x-1 p-0.5 rounded-lg border ${
-                  isDark ? "bg-[#181614] border-stone-800" : "bg-white border-stone-200"
+                  isDark ? "bg-[#181512] border-stone-700" : "bg-white/80 border-orange-300"
                 }`}
               >
                 <button
                   type="button"
                   onClick={() => setDesktopLayout("split")}
-                  className={`flex items-center space-x-1.5 px-3 py-1 rounded-md font-bold transition-all cursor-pointer ${
+                  className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-md font-bold text-xs sm:text-sm transition-all cursor-pointer ${
                     desktopLayout === "split"
                       ? "bg-[#FF6B00] text-white shadow-xs"
                       : isDark
-                      ? "text-stone-400 hover:text-white"
-                      : "text-stone-600 hover:text-stone-900"
+                      ? "text-stone-300 hover:text-white hover:bg-[#282420]"
+                      : "text-stone-800 hover:text-orange-950 hover:bg-orange-100/70"
                   }`}
                 >
-                  <Columns className="w-3.5 h-3.5" />
+                  <Columns className="w-4 h-4" />
                   <span>Dual-Lens Split (Chart + AI Desk)</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setDesktopLayout("ai_focus")}
-                  className={`flex items-center space-x-1.5 px-3 py-1 rounded-md font-bold transition-all cursor-pointer ${
+                  className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-md font-bold text-xs sm:text-sm transition-all cursor-pointer ${
                     desktopLayout === "ai_focus"
                       ? "bg-[#FF6B00] text-white shadow-xs"
                       : isDark
-                      ? "text-stone-400 hover:text-white"
-                      : "text-stone-600 hover:text-stone-900"
+                      ? "text-stone-300 hover:text-white hover:bg-[#282420]"
+                      : "text-stone-800 hover:text-orange-950 hover:bg-orange-100/70"
                   }`}
                 >
-                  <Brain className="w-3.5 h-3.5" />
+                  <Brain className="w-4 h-4" />
                   <span>AI Research Desk Focus</span>
                 </button>
 
                 <button
                   type="button"
                   onClick={() => setDesktopLayout("chart_focus")}
-                  className={`flex items-center space-x-1.5 px-3 py-1 rounded-md font-bold transition-all cursor-pointer ${
+                  className={`flex items-center space-x-1.5 px-3.5 py-1.5 rounded-md font-bold text-xs sm:text-sm transition-all cursor-pointer ${
                     desktopLayout === "chart_focus"
                       ? "bg-[#FF6B00] text-white shadow-xs"
                       : isDark
-                      ? "text-stone-400 hover:text-white"
-                      : "text-stone-600 hover:text-stone-900"
+                      ? "text-stone-300 hover:text-white hover:bg-[#282420]"
+                      : "text-stone-800 hover:text-orange-950 hover:bg-orange-100/70"
                   }`}
                 >
-                  <Maximize2 className="w-3.5 h-3.5" />
+                  <Maximize2 className="w-4 h-4" />
                   <span>Chart &amp; Execution Focus</span>
                 </button>
               </div>
             </div>
 
-            <div className="flex items-center space-x-3 text-xs">
+            <div className="flex items-center space-x-3 text-xs sm:text-sm">
               <span className="flex items-center space-x-1.5 text-emerald-500 font-bold">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span>Live Feed Synced</span>
               </span>
               <span>•</span>
-              <span className="font-semibold text-[#FF6B00]">Active Asset: {tickerKey}</span>
+              <span className="font-bold text-[#FF6B00]">Active Asset: {tickerKey}</span>
             </div>
           </div>
 
           {/* Sticky Mobile Segmented View Control (Screens < 1024px) */}
           <div
-            className={`lg:hidden sticky top-14 z-30 px-3 py-2 border-b backdrop-blur-md flex items-center justify-between overflow-x-auto no-scrollbar gap-1.5 text-xs font-mono ${
-              isDark ? "bg-[#12100E]/95 border-stone-800" : "bg-white/95 border-orange-200 shadow-xs"
+            className={`lg:hidden sticky top-14 z-30 px-3 py-2 border-b backdrop-blur-md flex items-center justify-between overflow-x-auto no-scrollbar gap-2 text-sm font-mono ${
+              isDark
+                ? "bg-[#221E1A]/95 border-stone-700"
+                : "bg-[#FFE9D1]/95 border-orange-300 shadow-xs"
             }`}
           >
             <button
               type="button"
               onClick={() => setMobileTab("ai")}
-              className={`flex items-center space-x-1.5 px-3 py-2 rounded-lg font-bold shrink-0 transition-all cursor-pointer ${
+              className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-lg font-bold shrink-0 transition-all cursor-pointer ${
                 mobileTab === "ai"
                   ? "bg-[#FF6B00] text-white shadow-sm"
                   : isDark
-                  ? "bg-stone-900 text-stone-300 border border-stone-800"
-                  : "bg-stone-100 text-stone-700 border border-stone-200"
+                  ? "bg-[#181512] text-stone-200 border border-stone-700"
+                  : "bg-white text-stone-800 border border-orange-300"
               }`}
             >
               <Brain className="w-4 h-4" />
@@ -206,12 +212,12 @@ export default function Home() {
             <button
               type="button"
               onClick={() => setMobileTab("chart")}
-              className={`flex items-center space-x-1.5 px-3 py-2 rounded-lg font-bold shrink-0 transition-all cursor-pointer ${
+              className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-lg font-bold shrink-0 transition-all cursor-pointer ${
                 mobileTab === "chart"
                   ? "bg-[#FF6B00] text-white shadow-sm"
                   : isDark
-                  ? "bg-stone-900 text-stone-300 border border-stone-800"
-                  : "bg-stone-100 text-stone-700 border border-stone-200"
+                  ? "bg-[#181512] text-stone-200 border border-stone-700"
+                  : "bg-white text-stone-800 border border-orange-300"
               }`}
             >
               <BarChart3 className="w-4 h-4" />
@@ -221,12 +227,12 @@ export default function Home() {
             <button
               type="button"
               onClick={() => setMobileTab("radar")}
-              className={`flex items-center space-x-1.5 px-3 py-2 rounded-lg font-bold shrink-0 transition-all cursor-pointer ${
+              className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-lg font-bold shrink-0 transition-all cursor-pointer ${
                 mobileTab === "radar"
                   ? "bg-[#FF6B00] text-white shadow-sm"
                   : isDark
-                  ? "bg-stone-900 text-stone-300 border border-stone-800"
-                  : "bg-stone-100 text-stone-700 border border-stone-200"
+                  ? "bg-[#181512] text-stone-200 border border-stone-700"
+                  : "bg-white text-stone-800 border border-orange-300"
               }`}
             >
               <Radio className="w-4 h-4" />
@@ -236,12 +242,12 @@ export default function Home() {
             <button
               type="button"
               onClick={() => setMobileTab("ticket")}
-              className={`flex items-center space-x-1.5 px-3 py-2 rounded-lg font-bold shrink-0 transition-all cursor-pointer ${
+              className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-lg font-bold shrink-0 transition-all cursor-pointer ${
                 mobileTab === "ticket"
                   ? "bg-[#FF6B00] text-white shadow-sm"
                   : isDark
-                  ? "bg-stone-900 text-stone-300 border border-stone-800"
-                  : "bg-stone-100 text-stone-700 border border-stone-200"
+                  ? "bg-[#181512] text-stone-200 border border-stone-700"
+                  : "bg-white text-stone-800 border border-orange-300"
               }`}
             >
               <Briefcase className="w-4 h-4" />
@@ -251,12 +257,12 @@ export default function Home() {
             <button
               type="button"
               onClick={() => setMobileTab("sentiment")}
-              className={`flex items-center space-x-1.5 px-3 py-2 rounded-lg font-bold shrink-0 transition-all cursor-pointer ${
+              className={`flex items-center space-x-1.5 px-3.5 py-2 rounded-lg font-bold shrink-0 transition-all cursor-pointer ${
                 mobileTab === "sentiment"
                   ? "bg-[#FF6B00] text-white shadow-sm"
                   : isDark
-                  ? "bg-stone-900 text-stone-300 border border-stone-800"
-                  : "bg-stone-100 text-stone-700 border border-stone-200"
+                  ? "bg-[#181512] text-stone-200 border border-stone-700"
+                  : "bg-white text-stone-800 border border-orange-300"
               }`}
             >
               <Gauge className="w-4 h-4" />

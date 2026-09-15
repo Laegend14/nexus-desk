@@ -276,48 +276,48 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
     <div
       className={`w-full rounded-2xl overflow-hidden flex flex-col font-sans transition-colors duration-200 border ${
         isDark
-          ? "bg-[#141210] border-stone-800 shadow-xl"
-          : "bg-white border-orange-200 shadow-md"
+          ? "bg-[#1E1B18] border-stone-700/80 shadow-xl"
+          : "bg-white border-2 border-orange-300 shadow-[0_8px_30px_-6px_rgba(255,107,0,0.15)]"
       }`}
     >
       {/* Top Header & Tab Selector */}
       <div
-        className={`px-4 sm:px-6 py-3 border-b flex flex-wrap items-center justify-between gap-3 ${
-          isDark ? "border-stone-800 bg-[#161412]" : "border-orange-100 bg-[#FAF7F2]"
+        className={`px-4 sm:px-6 py-3.5 border-b flex flex-wrap items-center justify-between gap-3 ${
+          isDark ? "border-stone-700 bg-[#25211D]" : "border-orange-200 bg-[#FFE9D1]"
         }`}
       >
         <div className="flex items-center space-x-2.5">
-          <div className="w-8 h-8 rounded-lg bg-[#FF6B00]/15 flex items-center justify-center text-[#FF6B00]">
+          <div className="w-8 h-8 rounded-lg bg-[#FF6B00]/20 flex items-center justify-center text-[#FF6B00]">
             <Brain className="w-5 h-5" />
           </div>
           <div>
             <h2
-              className={`text-sm sm:text-base font-bold tracking-tight ${
-                isDark ? "text-white" : "text-stone-900"
+              className={`text-base sm:text-lg font-bold tracking-tight ${
+                isDark ? "text-white" : "text-stone-950"
               }`}
             >
               NexusDesk AI Research Station
             </h2>
-            <p className="text-xs text-stone-400 font-mono">
+            <p className="text-xs sm:text-sm text-stone-500 dark:text-stone-400 font-mono font-medium">
               Qwen 3.8-Max • Supabase Memory • Bitget UTA v3
             </p>
           </div>
         </div>
 
         {/* View Switcher Tabs: Cockpit vs History */}
-        <div className="flex items-center space-x-1 p-1 rounded-xl bg-stone-200/50 dark:bg-[#1E1B18] border border-stone-300/60 dark:border-stone-800">
+        <div className="flex items-center space-x-1.5 p-1 rounded-xl bg-stone-200/80 dark:bg-[#181512] border border-orange-300 dark:border-stone-700">
           <button
             type="button"
             onClick={() => setActiveTab("cockpit")}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+            className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-mono font-bold transition-all cursor-pointer ${
               activeTab === "cockpit"
                 ? "bg-[#FF6B00] text-white shadow-xs"
                 : isDark
-                ? "text-stone-400 hover:text-stone-200"
-                : "text-stone-600 hover:text-stone-900"
+                ? "text-stone-300 hover:text-white"
+                : "text-stone-700 hover:text-stone-950"
             }`}
           >
-            <MessageSquare className="w-3.5 h-3.5" />
+            <MessageSquare className="w-4 h-4" />
             <span>Active Cockpit</span>
           </button>
 
@@ -327,19 +327,19 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
               setActiveTab("history");
               fetchHistory(true);
             }}
-            className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer relative ${
+            className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-mono font-bold transition-all cursor-pointer relative ${
               activeTab === "history"
                 ? "bg-[#FF6B00] text-white shadow-xs"
                 : isDark
-                ? "text-stone-400 hover:text-stone-200"
-                : "text-stone-600 hover:text-stone-900"
+                ? "text-stone-300 hover:text-white"
+                : "text-stone-700 hover:text-stone-950"
             }`}
           >
-            <History className="w-3.5 h-3.5" />
+            <History className="w-4 h-4" />
             <span>History</span>
             {historyList.length > 0 && (
               <span
-                className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono font-bold ${
+                className={`text-xs px-2 py-0.5 rounded-full font-mono font-bold ${
                   activeTab === "history"
                     ? "bg-white text-[#FF6B00]"
                     : "bg-[#FF6B00] text-white"
@@ -359,32 +359,32 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
         <div className="flex flex-col">
           {/* Target Stock & Skills Banner */}
           <div
-            className={`px-4 sm:px-6 py-2.5 border-b flex flex-wrap items-center justify-between gap-2 ${
-              isDark ? "bg-[#100E0C] border-stone-800" : "bg-orange-50/40 border-orange-100"
+            className={`px-4 sm:px-6 py-2.5 border-b flex flex-wrap items-center justify-between gap-2.5 ${
+              isDark ? "bg-[#1A1715] border-stone-700" : "bg-[#FFF0DF] border-orange-200"
             }`}
           >
-            <div className="flex items-center space-x-2">
-              <StockLogo ticker={selectedTicker} size={20} />
+            <div className="flex items-center space-x-2.5">
+              <StockLogo ticker={selectedTicker} size={22} />
               <span
-                className={`text-xs font-mono px-2 py-0.5 rounded-md font-bold ${
+                className={`text-xs sm:text-sm font-mono px-2.5 py-1 rounded-md font-bold ${
                   isDark
-                    ? "bg-stone-800 text-stone-200 border border-stone-700"
-                    : "bg-orange-100/70 text-orange-950 border border-orange-200"
+                    ? "bg-stone-800 text-stone-100 border border-stone-700"
+                    : "bg-orange-100 text-orange-950 border border-orange-300 shadow-2xs"
                 }`}
               >
                 Target: {selectedTicker}
               </span>
 
               {savedDbNotice && (
-                <span className="flex items-center space-x-1 text-[11px] font-mono text-emerald-500 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-md">
-                  <Database className="w-3 h-3" />
+                <span className="flex items-center space-x-1.5 text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 border border-emerald-500/30 px-2.5 py-1 rounded-md">
+                  <Database className="w-3.5 h-3.5" />
                   <span>Stored in Supabase ({savedDbNotice.time})</span>
                 </span>
               )}
             </div>
 
-            <div className="flex items-center space-x-2">
-              <span className="text-xs font-mono text-stone-400 font-bold">
+            <div className="flex items-center space-x-2.5">
+              <span className="text-xs sm:text-sm font-mono text-stone-500 dark:text-stone-400 font-bold">
                 {activeSkills.length}/5 Skills Active
               </span>
               {conversation.length > 0 && (
@@ -394,14 +394,14 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                     setConversation([]);
                     setSavedDbNotice(null);
                   }}
-                  className={`text-[11px] font-mono flex items-center space-x-1 px-2 py-0.5 rounded border transition-all cursor-pointer ${
+                  className={`text-xs font-mono font-bold flex items-center space-x-1 px-2.5 py-1 rounded border transition-all cursor-pointer ${
                     isDark
-                      ? "bg-[#1E1B18] border-stone-800 text-stone-400 hover:text-stone-200"
-                      : "bg-white border-stone-200 text-stone-600 hover:text-stone-900"
+                      ? "bg-[#282420] border-stone-700 text-stone-300 hover:text-white"
+                      : "bg-white border-orange-200 text-stone-700 hover:text-stone-950 shadow-2xs"
                   }`}
                   title="Reset conversation memory"
                 >
-                  <RotateCcw className="w-2.5 h-2.5" />
+                  <RotateCcw className="w-3 h-3" />
                   <span>New Thread</span>
                 </button>
               )}
@@ -411,7 +411,7 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
           {/* Bitget Open Research Skills Bar */}
           <div
             className={`px-4 sm:px-6 py-2.5 border-b flex flex-wrap gap-2 ${
-              isDark ? "bg-[#0E0C0A] border-stone-800" : "bg-[#FAF7F2] border-orange-100"
+              isDark ? "bg-[#221E1A] border-stone-800" : "bg-[#FFEED9] border-orange-200"
             }`}
           >
             {BITGET_RESEARCH_SKILLS.map((skill) => {
@@ -421,21 +421,21 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                   key={skill.id}
                   type="button"
                   onClick={() => toggleSkill(skill.id)}
-                  className={`text-xs font-mono px-2.5 py-1 rounded-lg border flex items-center space-x-1.5 transition-all cursor-pointer ${
+                  className={`text-xs sm:text-sm font-mono px-3 py-1.5 rounded-lg border flex items-center space-x-2 transition-all cursor-pointer ${
                     isSelected
                       ? isDark
-                        ? "bg-[#FF6B00]/20 border-[#FF6B00] text-[#FF6B00] font-bold shadow-xs"
-                        : "bg-orange-50 border-[#FF6B00] text-orange-950 font-bold shadow-xs"
+                        ? "bg-[#FF6B00]/25 border-[#FF6B00] text-[#FF6B00] font-bold shadow-xs"
+                        : "bg-white border-2 border-[#FF6B00] text-orange-950 font-bold shadow-xs"
                       : isDark
-                      ? "bg-[#1A1816] border-stone-800 text-stone-400 hover:text-white"
-                      : "bg-white border-stone-200 text-stone-500 hover:text-stone-900"
+                      ? "bg-[#282420] border-stone-700 text-stone-300 hover:text-white"
+                      : "bg-white/80 border-orange-200 text-stone-700 hover:text-stone-950 hover:bg-white"
                   }`}
                 >
                   <span
-                    className={`w-1.5 h-1.5 rounded-full ${
+                    className={`w-2 h-2 rounded-full ${
                       isSelected
-                        ? "bg-[#FF6B00] shadow-[0_0_6px_rgba(255,107,0,0.8)]"
-                        : "bg-stone-500"
+                        ? "bg-[#FF6B00] shadow-[0_0_8px_rgba(255,107,0,0.9)]"
+                        : "bg-stone-400"
                     }`}
                   />
                   <span>{skill.name}</span>
@@ -447,15 +447,15 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
           {/* Conversational Memory Thread Preview (if multi-turn) */}
           {conversation.length > 2 && (
             <div
-              className={`px-4 sm:px-6 py-2 border-b flex items-center space-x-2 text-xs font-mono overflow-x-auto no-scrollbar ${
-                isDark ? "bg-[#171412] border-stone-800 text-stone-400" : "bg-orange-50/30 border-orange-100 text-stone-600"
+              className={`px-4 sm:px-6 py-2 border-b flex items-center space-x-2 text-xs sm:text-sm font-mono overflow-x-auto no-scrollbar ${
+                isDark ? "bg-[#1F1C18] border-stone-800 text-stone-300" : "bg-orange-100/60 border-orange-200 text-stone-800"
               }`}
             >
-              <CornerDownRight className="w-3.5 h-3.5 text-[#FF6B00] shrink-0" />
-              <span className="font-bold uppercase text-[11px] text-[#FF6B00] shrink-0">
+              <CornerDownRight className="w-4 h-4 text-[#FF6B00] shrink-0" />
+              <span className="font-bold uppercase text-xs text-[#FF6B00] shrink-0">
                 Memory Active ({conversation.length} msgs):
               </span>
-              <span className="truncate max-w-md italic">
+              <span className="truncate max-w-md italic font-medium">
                 Last: "{conversation[conversation.length - 2]?.content.slice(0, 70)}..."
               </span>
             </div>
@@ -464,7 +464,7 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
           {/* Natural Language Input Bar */}
           <div
             className={`p-4 sm:p-5 border-b ${
-              isDark ? "border-stone-800 bg-[#0E0C0A]" : "border-orange-100 bg-[#FDFBF7]"
+              isDark ? "border-stone-800 bg-[#191613]" : "border-orange-200 bg-[#FFF8F0]"
             }`}
           >
             <form
@@ -479,31 +479,31 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={`Ask station: "Show me ${selectedTicker} volume vs native stock and correlate with crypto liquidity"`}
-                className={`w-full rounded-xl py-3.5 pl-4 pr-32 text-sm sm:text-base font-mono transition-all focus:outline-none focus:ring-2 focus:ring-[#FF6B00] ${
+                className={`w-full rounded-xl py-3.5 pl-4 pr-36 text-base sm:text-lg font-mono transition-all focus:outline-none focus:ring-2 focus:ring-[#FF6B00] ${
                   isDark
-                    ? "bg-[#1A1816] border border-stone-700 text-white placeholder:text-stone-400 shadow-inner"
-                    : "bg-white border border-stone-300 text-stone-900 placeholder:text-stone-400 shadow-sm"
+                    ? "bg-[#25211D] border-2 border-stone-700 text-white placeholder:text-stone-400 shadow-inner"
+                    : "bg-white border-2 border-orange-300 text-stone-950 placeholder:text-stone-400 shadow-xs"
                 }`}
               />
               <button
                 type="submit"
                 disabled={loading}
-                className="absolute right-2 px-4 py-2 rounded-lg bg-[#FF6B00] hover:bg-[#EA580C] text-white text-xs sm:text-sm font-bold font-mono flex items-center space-x-1.5 disabled:opacity-50 transition-all shadow-md active:scale-[0.98] cursor-pointer"
+                className="absolute right-2 px-5 py-2.5 rounded-lg bg-[#FF6B00] hover:bg-[#EA580C] text-white text-sm sm:text-base font-bold font-mono flex items-center space-x-2 disabled:opacity-50 transition-all shadow-md active:scale-[0.98] cursor-pointer"
               >
                 {loading ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
                 ) : (
                   <>
                     <span>Synthesize</span>
-                    <Send className="w-3.5 h-3.5" />
+                    <Send className="w-4 h-4" />
                   </>
                 )}
               </button>
             </form>
 
             {/* Quick Suggestion Chips */}
-            <div className="flex items-center space-x-2 mt-3 overflow-x-auto no-scrollbar pb-1">
-              <span className="text-xs font-mono text-stone-400 uppercase tracking-wider shrink-0 font-bold">
+            <div className="flex items-center space-x-2 mt-3.5 overflow-x-auto no-scrollbar pb-1">
+              <span className="text-xs sm:text-sm font-mono text-stone-500 dark:text-stone-400 uppercase tracking-wider shrink-0 font-bold">
                 {analysis ? "Follow-ups:" : "Presets:"}
               </span>
               {(analysis ? FOLLOW_UP_SUGGESTIONS : PRESET_QUERIES).map((preset, idx) => (
@@ -514,10 +514,10 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                     setQuery(preset);
                     handleRunAnalysis(preset);
                   }}
-                  className={`shrink-0 text-xs font-mono px-3 py-1.5 rounded-lg border transition-all cursor-pointer whitespace-nowrap ${
+                  className={`shrink-0 text-xs sm:text-sm font-mono font-semibold px-3.5 py-1.5 rounded-lg border transition-all cursor-pointer whitespace-nowrap ${
                     isDark
-                      ? "bg-[#1A1816] hover:bg-[#26201A] text-stone-300 border-stone-800 hover:border-orange-500/50"
-                      : "bg-white hover:bg-orange-50 text-stone-700 border-stone-200 hover:border-orange-300 shadow-2xs"
+                      ? "bg-[#25211D] hover:bg-[#2F2923] text-stone-200 border-stone-700 hover:border-orange-500/50"
+                      : "bg-white hover:bg-orange-100/70 text-stone-900 border-orange-200 hover:border-orange-400 shadow-2xs"
                   }`}
                 >
                   {preset}
@@ -530,17 +530,17 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
           <div className="p-4 sm:p-6 flex-1 space-y-5 overflow-y-auto max-h-[700px]">
             {!analysis && !loading && (
               <div className="py-12 text-center space-y-3">
-                <div className="w-12 h-12 rounded-2xl bg-[#FF6B00]/10 mx-auto flex items-center justify-center text-[#FF6B00]">
+                <div className="w-12 h-12 rounded-2xl bg-[#FF6B00]/15 mx-auto flex items-center justify-center text-[#FF6B00]">
                   <Sparkles className="w-6 h-6" />
                 </div>
                 <p
-                  className={`font-bold text-sm sm:text-base ${
-                    isDark ? "text-stone-200" : "text-stone-900"
+                  className={`font-bold text-base sm:text-lg ${
+                    isDark ? "text-stone-100" : "text-stone-950"
                   }`}
                 >
                   Dual-Lens Research Ready for {selectedTicker}
                 </p>
-                <p className="text-xs sm:text-sm text-stone-400 max-w-lg mx-auto font-sans leading-relaxed">
+                <p className="text-sm sm:text-base text-stone-500 dark:text-stone-400 max-w-lg mx-auto font-sans leading-relaxed">
                   Type your inquiry above or tap a preset prompt. Every synthesis is automatically
                   persisted to the Supabase database so you can revisit past memos in the History tab.
                 </p>
@@ -548,9 +548,9 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                   <button
                     type="button"
                     onClick={() => setActiveTab("history")}
-                    className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg border border-[#FF6B00]/40 text-[#FF6B00] text-xs font-mono font-bold hover:bg-[#FF6B00]/10 transition-colors"
+                    className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg border-2 border-[#FF6B00] text-[#FF6B00] text-xs sm:text-sm font-mono font-bold hover:bg-[#FF6B00]/10 transition-colors cursor-pointer"
                   >
-                    <History className="w-3.5 h-3.5" />
+                    <History className="w-4 h-4" />
                     <span>View {historyList.length} Stored Historical Memos</span>
                   </button>
                 )}
@@ -559,15 +559,15 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
 
             {loading && (
               <div className="py-12 text-center space-y-3 font-mono">
-                <Loader2 className="w-9 h-9 mx-auto animate-spin text-[#FF6B00]" />
+                <Loader2 className="w-10 h-10 mx-auto animate-spin text-[#FF6B00]" />
                 <p
-                  className={`text-sm sm:text-base font-bold animate-pulse ${
-                    isDark ? "text-white" : "text-stone-900"
+                  className={`text-base sm:text-lg font-bold animate-pulse ${
+                    isDark ? "text-white" : "text-stone-950"
                   }`}
                 >
                   Qwen 3.8-Max is synthesizing across {activeSkills.length} Bitget skills...
                 </p>
-                <p className="text-xs sm:text-sm text-stone-400 font-sans">
+                <p className="text-sm text-stone-500 dark:text-stone-400 font-sans">
                   Processing 24/7 on-chain spreads, Bitget UTA open interest, and saving analysis to
                   database.
                 </p>
@@ -578,72 +578,72 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
               <div className="space-y-5">
                 {/* Catalyst Alert Card */}
                 <div
-                  className={`p-4 rounded-xl border ${
+                  className={`p-4 sm:p-5 rounded-xl border-2 ${
                     isDark
-                      ? "bg-[#1A1816] border-orange-500/30 text-stone-100 shadow-sm"
-                      : "bg-orange-50/80 border-orange-200 text-stone-900 shadow-xs"
+                      ? "bg-[#282420] border-orange-500/40 text-stone-100 shadow-sm"
+                      : "bg-gradient-to-r from-orange-100 to-amber-100/80 border-orange-300 text-stone-950 shadow-xs"
                   }`}
                 >
-                  <div className="flex items-center space-x-2 text-[#FF6B00] font-mono text-xs sm:text-sm font-bold mb-1.5">
+                  <div className="flex items-center space-x-2 text-[#FF6B00] font-mono text-sm sm:text-base font-bold mb-2">
                     <AlertCircle className="w-4 h-4 shrink-0" />
                     <span>Primary Cross-Asset Catalyst:</span>
                   </div>
-                  <p className="text-sm sm:text-[15px] leading-relaxed font-sans font-medium">
+                  <p className="text-base sm:text-[17px] leading-relaxed font-sans font-semibold">
                     {analysis.catalystSummary}
                   </p>
                 </div>
 
                 {/* Cross-Asset Correlation Card */}
                 <div
-                  className={`p-4 rounded-xl border font-mono ${
-                    isDark ? "bg-[#171513] border-stone-800" : "bg-white border-orange-200"
+                  className={`p-4 sm:p-5 rounded-xl border-2 font-mono ${
+                    isDark ? "bg-[#24201D] border-stone-700" : "bg-white border-orange-300 shadow-xs"
                   }`}
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                    <span className="font-bold text-sm text-[#FF6B00] flex items-center space-x-2">
+                    <span className="font-bold text-sm sm:text-base text-[#FF6B00] flex items-center space-x-2">
                       <TrendingUp className="w-4 h-4" />
                       <span>Dual-Lens Cross-Asset Correlation</span>
                     </span>
-                    <span className="text-xs font-bold text-emerald-500 bg-emerald-500/15 px-2.5 py-1 rounded-md border border-emerald-500/30">
+                    <span className="text-xs sm:text-sm font-bold text-emerald-500 bg-emerald-500/15 px-3 py-1 rounded-md border border-emerald-500/30">
                       r = {analysis.crossAssetCorrelation?.correlationCoefficient ?? 0.86} (High Beta)
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div
-                      className={`p-3 rounded-lg ${
+                      className={`p-3.5 rounded-lg border ${
                         isDark
-                          ? "bg-[#1E1B18] border border-stone-800"
-                          : "bg-orange-50/60 border border-orange-100"
+                          ? "bg-[#1C1916] border-stone-700"
+                          : "bg-orange-50/90 border-orange-200"
                       }`}
                     >
-                      <span className="text-stone-400 block text-xs uppercase font-bold">
+                      <span className="text-stone-500 dark:text-stone-400 block text-xs uppercase font-bold">
                         Correlated Crypto Proxy:
                       </span>
-                      <span className="font-bold text-sm sm:text-base text-stone-100 dark:text-white mt-0.5 block">
+                      <span className="font-bold text-base sm:text-lg text-stone-950 dark:text-white mt-1 block">
                         {analysis.crossAssetCorrelation?.correlatedCrypto ?? "RNDR / NEAR / FET"}
                       </span>
                     </div>
                     <div
-                      className={`p-3 rounded-lg ${
+                      className={`p-3.5 rounded-lg border ${
                         isDark
-                          ? "bg-[#1E1B18] border border-stone-800"
-                          : "bg-orange-50/60 border border-orange-100"
+                          ? "bg-[#1C1916] border-stone-700"
+                          : "bg-orange-50/90 border-orange-200"
                       }`}
                     >
-                      <span className="text-stone-400 block text-xs uppercase font-bold">
+                      <span className="text-stone-500 dark:text-stone-400 block text-xs uppercase font-bold">
                         Tokenized vs Native ADV:
                       </span>
-                      <span className="font-bold text-sm sm:text-base text-stone-100 dark:text-white mt-0.5 block">
+                      <span className="font-bold text-base sm:text-lg text-stone-950 dark:text-white mt-1 block">
                         {analysis.crossAssetCorrelation?.volumeComparison ??
                           "16.4% of Cash Market Turnover"}
                       </span>
                     </div>
                   </div>
 
-                  <div className="mt-3 text-xs sm:text-sm font-sans pt-3 border-t border-stone-800/80 leading-relaxed">
-                    <strong className="text-[#FF6B00] font-mono">Divergence Signal: </strong>
-                    <span className={isDark ? "text-stone-300" : "text-stone-700"}>
+                  <div className="mt-3 text-sm sm:text-base font-sans pt-3 border-t border-stone-700/80 leading-relaxed">
+                    <strong className="text-[#FF6B00] font-mono font-bold">Divergence Signal: </strong>
+                    <span className={isDark ? "text-stone-200" : "text-stone-800"}>
                       {analysis.crossAssetCorrelation?.divergenceSignal}
                     </span>
                   </div>
@@ -652,27 +652,27 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                 {/* Bitget 5-Skills Intelligence Breakdown */}
                 {analysis.skillSummaries && analysis.skillSummaries.length > 0 && (
                   <div className="space-y-2.5">
-                    <div className="flex items-center justify-between text-xs font-mono uppercase tracking-wider">
-                      <span className="font-bold text-stone-300">Bitget Research Skills Breakdown</span>
+                    <div className="flex items-center justify-between text-xs sm:text-sm font-mono uppercase tracking-wider">
+                      <span className="font-bold text-stone-700 dark:text-stone-300">Bitget Research Skills Breakdown</span>
                       <span className="text-[#FF6B00] font-bold">Multi-Agent Synthesis</span>
                     </div>
 
-                    <div className="grid grid-cols-1 gap-2 font-mono">
+                    <div className="grid grid-cols-1 gap-2.5 font-mono">
                       {analysis.skillSummaries.map((s, idx) => (
                         <div
                           key={idx}
-                          className={`p-3 rounded-xl border flex flex-col space-y-1.5 transition-colors ${
-                            isDark ? "bg-[#161412] border-stone-800" : "bg-stone-50 border-stone-200"
+                          className={`p-3.5 rounded-xl border flex flex-col space-y-1.5 transition-colors ${
+                            isDark ? "bg-[#24201D] border-stone-700" : "bg-orange-50/80 border-orange-200"
                           }`}
                         >
                           <div className="flex items-center justify-between">
-                            <span className="text-xs sm:text-sm font-bold text-[#FF6B00] flex items-center space-x-1.5">
-                              <Activity className="w-3.5 h-3.5" />
+                            <span className="text-sm sm:text-base font-bold text-[#FF6B00] flex items-center space-x-1.5">
+                              <Activity className="w-4 h-4" />
                               <span>{s.name}</span>
                             </span>
-                            <span className="text-xs text-stone-400 font-sans">{s.focus}</span>
+                            <span className="text-xs sm:text-sm text-stone-500 dark:text-stone-400 font-sans">{s.focus}</span>
                           </div>
-                          <p className="text-xs sm:text-sm text-stone-200 dark:text-stone-300 font-sans leading-relaxed">
+                          <p className="text-sm sm:text-base text-stone-800 dark:text-stone-200 font-sans leading-relaxed">
                             {s.insight}
                           </p>
                         </div>
@@ -690,7 +690,7 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
 
                 {/* Qwen Chain-of-Thought Reasoning Box */}
                 <div className="space-y-2">
-                  <div className="flex items-center justify-between text-xs font-mono uppercase tracking-wider">
+                  <div className="flex items-center justify-between text-xs sm:text-sm font-mono uppercase tracking-wider">
                     <span className="flex items-center space-x-1.5 text-[#FF6B00] font-bold">
                       <Brain className="w-4 h-4" />
                       <span>Qwen 3.8-Max Institutional Reasoning</span>
@@ -704,10 +704,10 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                     </span>
                   </div>
                   <div
-                    className={`p-4 sm:p-5 rounded-xl border text-sm sm:text-[15px] leading-relaxed font-sans whitespace-pre-wrap ${
+                    className={`p-4 sm:p-5 rounded-xl border-2 text-base sm:text-[17px] leading-relaxed font-sans whitespace-pre-wrap font-medium ${
                       isDark
-                        ? "bg-[#161412] border-stone-800 text-stone-200"
-                        : "bg-stone-50 border-stone-200 text-stone-800"
+                        ? "bg-[#24201D] border-stone-700 text-stone-100"
+                        : "bg-[#FFF8F0] border-orange-200 text-stone-900"
                     }`}
                   >
                     {analysis.reasoning}
@@ -717,31 +717,31 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                 {/* Metric Summary Ribbon */}
                 <div className="grid grid-cols-3 gap-3 pt-1 font-mono text-center">
                   <div
-                    className={`p-3 rounded-xl border ${
-                      isDark ? "bg-[#1A1816] border-stone-800" : "bg-orange-50/60 border-orange-200"
+                    className={`p-3.5 rounded-xl border-2 ${
+                      isDark ? "bg-[#282420] border-stone-700" : "bg-gradient-to-b from-orange-100 to-amber-50/80 border-orange-300"
                     }`}
                   >
-                    <div className="text-xs text-stone-400 uppercase font-semibold">
+                    <div className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 uppercase font-bold">
                       Implied Monday Gap
                     </div>
                     <div
-                      className={`font-bold text-base sm:text-lg tabular-nums mt-1 ${
-                        isDark ? "text-white" : "text-stone-900"
+                      className={`font-extrabold text-lg sm:text-2xl tabular-nums mt-1 ${
+                        isDark ? "text-white" : "text-stone-950"
                       }`}
                     >
                       {analysis.impliedGapForecast}
                     </div>
                   </div>
                   <div
-                    className={`p-3 rounded-xl border ${
-                      isDark ? "bg-[#1A1816] border-stone-800" : "bg-orange-50/60 border-orange-200"
+                    className={`p-3.5 rounded-xl border-2 ${
+                      isDark ? "bg-[#282420] border-stone-700" : "bg-gradient-to-b from-orange-100 to-amber-50/80 border-orange-300"
                     }`}
                   >
-                    <div className="text-xs text-stone-400 uppercase font-semibold">
+                    <div className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 uppercase font-bold">
                       Risk / Reward
                     </div>
                     <div
-                      className={`font-bold text-base sm:text-lg tabular-nums mt-1 ${
+                      className={`font-extrabold text-lg sm:text-2xl tabular-nums mt-1 ${
                         isDark ? "text-emerald-400" : "text-emerald-700"
                       }`}
                     >
@@ -749,14 +749,14 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                     </div>
                   </div>
                   <div
-                    className={`p-3 rounded-xl border ${
-                      isDark ? "bg-[#1A1816] border-stone-800" : "bg-orange-50/60 border-orange-200"
+                    className={`p-3.5 rounded-xl border-2 ${
+                      isDark ? "bg-[#282420] border-stone-700" : "bg-gradient-to-b from-orange-100 to-amber-50/80 border-orange-300"
                     }`}
                   >
-                    <div className="text-xs text-stone-400 uppercase font-semibold">
+                    <div className="text-xs sm:text-sm text-stone-600 dark:text-stone-400 uppercase font-bold">
                       Est. Slippage
                     </div>
-                    <div className="text-[#FF6B00] font-bold text-base sm:text-lg tabular-nums mt-1">
+                    <div className="text-[#FF6B00] font-extrabold text-lg sm:text-2xl tabular-nums mt-1">
                       {analysis.slippageEstimatePct}%
                     </div>
                   </div>
@@ -767,16 +767,16 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                   <button
                     type="button"
                     onClick={handleExportPlaybook}
-                    className="w-full py-3.5 px-5 rounded-xl bg-[#FF6B00] hover:bg-[#EA580C] text-white text-sm font-bold font-mono flex items-center justify-center space-x-2.5 transition-all shadow-md active:scale-[0.99] cursor-pointer"
+                    className="w-full py-4 px-5 rounded-xl bg-[#FF6B00] hover:bg-[#EA580C] text-white text-base font-bold font-mono flex items-center justify-center space-x-2.5 transition-all shadow-md active:scale-[0.99] cursor-pointer"
                   >
                     {exported ? (
                       <>
-                        <CheckCircle2 className="w-4 h-4 text-white" />
+                        <CheckCircle2 className="w-5 h-5 text-white" />
                         <span>Exported to Bitget Playbook JSON!</span>
                       </>
                     ) : (
                       <>
-                        <Download className="w-4 h-4" />
+                        <Download className="w-5 h-5" />
                         <span>1-Click Export to Bitget Playbook JSON</span>
                       </>
                     )}
@@ -795,23 +795,23 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
         <div className="flex flex-col flex-1">
           {/* History Controls Bar */}
           <div
-            className={`p-4 border-b space-y-3 ${
-              isDark ? "bg-[#100E0C] border-stone-800" : "bg-[#FAF7F2] border-orange-100"
+            className={`p-4 sm:p-5 border-b space-y-3.5 ${
+              isDark ? "bg-[#221E1A] border-stone-700" : "bg-[#FFE9D1] border-orange-200"
             }`}
           >
             {/* Search & Top Action Row */}
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2.5">
               <div className="relative flex-1">
-                <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
+                <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-stone-400" />
                 <input
                   type="text"
                   value={historySearch}
                   onChange={(e) => setHistorySearch(e.target.value)}
                   placeholder="Search research queries, catalysts, or tickers..."
-                  className={`w-full pl-9 pr-3 py-2 text-xs sm:text-sm font-mono rounded-lg border focus:outline-none focus:ring-1 focus:ring-[#FF6B00] transition-colors ${
+                  className={`w-full pl-10 pr-3 py-2.5 text-sm sm:text-base font-mono rounded-lg border-2 focus:outline-none focus:ring-2 focus:ring-[#FF6B00] transition-colors ${
                     isDark
-                      ? "bg-[#1A1816] border-stone-700 text-white placeholder:text-stone-500"
-                      : "bg-white border-stone-300 text-stone-900 placeholder:text-stone-400"
+                      ? "bg-[#181512] border-stone-700 text-white placeholder:text-stone-400"
+                      : "bg-white border-orange-300 text-stone-950 placeholder:text-stone-400 shadow-2xs"
                   }`}
                 />
               </div>
@@ -820,10 +820,10 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                 type="button"
                 onClick={() => fetchHistory()}
                 disabled={loadingHistory}
-                className={`p-2 rounded-lg border text-xs font-mono flex items-center space-x-1 transition-all cursor-pointer ${
+                className={`p-2.5 rounded-lg border-2 text-sm font-mono flex items-center space-x-1.5 transition-all cursor-pointer ${
                   isDark
-                    ? "bg-[#1A1816] border-stone-700 text-stone-300 hover:text-white"
-                    : "bg-white border-stone-200 text-stone-700 hover:text-stone-950 shadow-2xs"
+                    ? "bg-[#282420] border-stone-700 text-stone-200 hover:text-white"
+                    : "bg-white border-orange-300 text-stone-800 hover:text-stone-950 shadow-2xs"
                 }`}
                 title="Refresh database records"
               >
@@ -834,8 +834,8 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                 <button
                   type="button"
                   onClick={handleClearAllHistory}
-                  className={`p-2 rounded-lg border text-xs font-mono transition-all text-red-500 hover:bg-red-500/10 cursor-pointer ${
-                    isDark ? "border-stone-800" : "border-stone-200"
+                  className={`p-2.5 rounded-lg border-2 text-sm font-mono transition-all text-red-500 hover:bg-red-500/10 cursor-pointer ${
+                    isDark ? "border-stone-700 bg-[#282420]" : "border-orange-300 bg-white shadow-2xs"
                   }`}
                   title="Clear all research history"
                 >
@@ -845,8 +845,8 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
             </div>
 
             {/* Ticker Filter Pills */}
-            <div className="flex items-center space-x-1.5 overflow-x-auto no-scrollbar pt-1">
-              <span className="text-[11px] font-mono text-stone-400 uppercase font-bold shrink-0 mr-1">
+            <div className="flex items-center space-x-2 overflow-x-auto no-scrollbar pt-1">
+              <span className="text-xs sm:text-sm font-mono text-stone-600 dark:text-stone-400 uppercase font-bold shrink-0 mr-1">
                 Filter:
               </span>
               {TICKER_TABS.map((t) => {
@@ -856,12 +856,12 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                     key={t}
                     type="button"
                     onClick={() => setHistoryFilterTicker(t)}
-                    className={`text-xs font-mono px-2.5 py-1 rounded-md border transition-all cursor-pointer shrink-0 ${
+                    className={`text-xs sm:text-sm font-mono px-3 py-1.5 rounded-md border transition-all cursor-pointer shrink-0 font-bold ${
                       isSelected
-                        ? "bg-[#FF6B00] border-[#FF6B00] text-white font-bold"
+                        ? "bg-[#FF6B00] border-[#FF6B00] text-white shadow-xs"
                         : isDark
-                        ? "bg-[#1A1816] border-stone-800 text-stone-400 hover:text-stone-200"
-                        : "bg-white border-stone-200 text-stone-600 hover:text-stone-900"
+                        ? "bg-[#181512] border-stone-700 text-stone-300 hover:text-white"
+                        : "bg-white border-orange-300 text-stone-800 hover:text-stone-950 shadow-2xs"
                     }`}
                   >
                     {t}
@@ -871,9 +871,9 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
             </div>
 
             {/* Status & Stats Meta */}
-            <div className="flex items-center justify-between text-[11px] font-mono text-stone-400 pt-1">
-              <div className="flex items-center space-x-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block shadow-[0_0_6px_rgba(16,185,129,0.8)]" />
+            <div className="flex items-center justify-between text-xs sm:text-sm font-mono text-stone-600 dark:text-stone-400 pt-1 font-bold">
+              <div className="flex items-center space-x-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
                 <span>Supabase Live DB: {historyList.length} total syntheses recorded</span>
               </div>
               <span>Showing: {filteredHistory.length}</span>
@@ -881,23 +881,23 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
           </div>
 
           {/* History Item Cards List */}
-          <div className="p-4 sm:p-6 space-y-3 overflow-y-auto max-h-[620px] flex-1">
+          <div className="p-4 sm:p-6 space-y-3.5 overflow-y-auto max-h-[620px] flex-1">
             {loadingHistory && (
               <div className="py-12 text-center space-y-2 font-mono">
-                <Loader2 className="w-8 h-8 mx-auto animate-spin text-[#FF6B00]" />
-                <p className="text-xs text-stone-400">Loading stored research memos from database...</p>
+                <Loader2 className="w-9 h-9 mx-auto animate-spin text-[#FF6B00]" />
+                <p className="text-sm text-stone-500 dark:text-stone-400">Loading stored research memos from database...</p>
               </div>
             )}
 
             {!loadingHistory && filteredHistory.length === 0 && (
               <div className="py-12 text-center space-y-3 font-mono">
-                <div className="w-10 h-10 rounded-xl bg-stone-500/10 mx-auto flex items-center justify-center text-stone-400">
-                  <Database className="w-5 h-5" />
+                <div className="w-12 h-12 rounded-xl bg-stone-500/15 mx-auto flex items-center justify-center text-stone-400">
+                  <Database className="w-6 h-6" />
                 </div>
-                <p className={`font-bold text-sm ${isDark ? "text-stone-300" : "text-stone-800"}`}>
+                <p className={`font-bold text-base ${isDark ? "text-stone-200" : "text-stone-900"}`}>
                   No Historical Memos Found
                 </p>
-                <p className="text-xs text-stone-400 max-w-sm mx-auto font-sans">
+                <p className="text-sm text-stone-500 dark:text-stone-400 max-w-sm mx-auto font-sans">
                   {historySearch || historyFilterTicker !== "ALL"
                     ? "Try adjusting your search terms or ticker filter above."
                     : "Every synthesis you execute in the Active Cockpit will automatically be stored here."}
@@ -909,7 +909,7 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                     setHistoryFilterTicker("ALL");
                     setActiveTab("cockpit");
                   }}
-                  className="px-3.5 py-1.5 rounded-lg bg-[#FF6B00] text-white text-xs font-mono font-bold hover:bg-[#EA580C] transition-colors"
+                  className="px-4 py-2 rounded-lg bg-[#FF6B00] text-white text-sm font-mono font-bold hover:bg-[#EA580C] transition-colors cursor-pointer"
                 >
                   Go to Cockpit & Ask AI
                 </button>
@@ -932,31 +932,31 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                   <div
                     key={item.id}
                     onClick={() => handleRevisitMemo(item)}
-                    className={`p-4 rounded-xl border transition-all cursor-pointer group hover:border-[#FF6B00] ${
+                    className={`p-4 sm:p-5 rounded-xl border-2 transition-all cursor-pointer group hover:border-[#FF6B00] ${
                       isDark
-                        ? "bg-[#171412] border-stone-800 hover:bg-[#1E1B18]"
-                        : "bg-white border-orange-100 hover:bg-orange-50/40 shadow-xs"
+                        ? "bg-[#24201D] border-stone-700 hover:bg-[#2B2622]"
+                        : "bg-white border-orange-200 hover:bg-orange-50/50 shadow-xs"
                     }`}
                   >
                     {/* Top Row: Logo, Ticker, Date, Delete */}
-                    <div className="flex items-center justify-between gap-2 mb-2">
-                      <div className="flex items-center space-x-2">
-                        <StockLogo ticker={ticker} size={18} />
-                        <span className="font-mono font-bold text-xs sm:text-sm text-[#FF6B00]">
+                    <div className="flex items-center justify-between gap-2 mb-2.5">
+                      <div className="flex items-center space-x-2.5">
+                        <StockLogo ticker={ticker} size={22} />
+                        <span className="font-mono font-bold text-sm sm:text-base text-[#FF6B00]">
                           {ticker}
                         </span>
-                        <span className="text-[11px] font-mono text-stone-400 flex items-center space-x-1">
-                          <Clock className="w-3 h-3" />
+                        <span className="text-xs sm:text-sm font-mono text-stone-500 dark:text-stone-400 flex items-center space-x-1 font-semibold">
+                          <Clock className="w-3.5 h-3.5" />
                           <span>{dateStr}</span>
                         </span>
                       </div>
 
-                      <div className="flex items-center space-x-1.5">
+                      <div className="flex items-center space-x-2">
                         <span
-                          className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded-md border ${
+                          className={`text-xs sm:text-sm font-mono font-bold px-2.5 py-1 rounded-md border ${
                             item.implied_gap_forecast?.includes("-")
-                              ? "bg-rose-500/10 text-rose-500 border-rose-500/20"
-                              : "bg-emerald-500/10 text-emerald-500 border-emerald-500/20"
+                              ? "bg-rose-500/15 text-rose-500 border-rose-500/30"
+                              : "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30"
                           }`}
                         >
                           Gap: {item.implied_gap_forecast || "+1.8% to +2.4%"}
@@ -965,10 +965,10 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                         <button
                           type="button"
                           onClick={(e) => handleDeleteItem(item.id, e)}
-                          className="p-1 rounded text-stone-400 hover:text-red-500 transition-colors cursor-pointer"
+                          className="p-1.5 rounded text-stone-400 hover:text-red-500 transition-colors cursor-pointer"
                           title="Delete from database"
                         >
-                          <Trash2 className="w-3.5 h-3.5" />
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     </div>
@@ -976,8 +976,8 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                     {/* Query Prompt */}
                     <div className="mb-2">
                       <p
-                        className={`text-xs sm:text-sm font-bold font-sans line-clamp-2 ${
-                          isDark ? "text-stone-100" : "text-stone-900"
+                        className={`text-base sm:text-lg font-bold font-sans line-clamp-2 ${
+                          isDark ? "text-stone-100" : "text-stone-950"
                         }`}
                       >
                         "{item.user_query}"
@@ -986,15 +986,15 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
 
                     {/* Catalyst Excerpt */}
                     {item.catalyst_summary && (
-                      <p className="text-xs text-stone-400 font-sans line-clamp-2 mb-3 leading-relaxed">
+                      <p className="text-sm sm:text-base text-stone-600 dark:text-stone-300 font-sans line-clamp-2 mb-3 leading-relaxed font-medium">
                         {item.catalyst_summary}
                       </p>
                     )}
 
                     {/* Bottom Action Footer */}
-                    <div className="flex items-center justify-between pt-2 border-t border-stone-800/40 text-xs font-mono">
-                      <span className="text-stone-400 text-[11px]">
-                        R/R: <strong className="text-emerald-500">{item.risk_reward_ratio || "3.2 : 1"}</strong>
+                    <div className="flex items-center justify-between pt-2.5 border-t border-stone-700/60 dark:border-stone-800 text-sm font-mono">
+                      <span className="text-stone-500 dark:text-stone-400 text-xs sm:text-sm font-bold">
+                        R/R: <strong className="text-emerald-600 dark:text-emerald-400">{item.risk_reward_ratio || "3.2 : 1"}</strong>
                       </span>
 
                       <button
@@ -1003,10 +1003,10 @@ export const ResearchDesk: React.FC<ResearchDeskProps> = ({
                           e.stopPropagation();
                           handleRevisitMemo(item);
                         }}
-                        className="flex items-center space-x-1 text-[#FF6B00] group-hover:underline font-bold text-xs"
+                        className="flex items-center space-x-1.5 text-[#FF6B00] group-hover:underline font-bold text-sm"
                       >
                         <span>Revisit in Cockpit</span>
-                        <ExternalLink className="w-3 h-3" />
+                        <ExternalLink className="w-4 h-4" />
                       </button>
                     </div>
                   </div>

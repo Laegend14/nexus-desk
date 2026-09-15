@@ -102,61 +102,61 @@ export const EtfFlowTracker: React.FC<EtfFlowTrackerProps> = ({ theme = "light" 
 
   return (
     <div
-      className={`rounded-xl border overflow-hidden flex flex-col font-sans transition-colors duration-200 ${
-        isDark ? "bg-[#141210] border-stone-800 shadow-md" : "bg-white border-orange-200/90 shadow-sm"
+      className={`rounded-2xl border-2 overflow-hidden flex flex-col font-sans transition-colors duration-200 ${
+        isDark ? "bg-[#1E1B18] border-stone-700/80 shadow-md" : "bg-white border-orange-300 shadow-[0_8px_30px_-6px_rgba(255,107,0,0.15)]"
       }`}
     >
       {/* Top Header */}
       <div
         className={`p-4 border-b flex flex-wrap items-center justify-between gap-2 ${
-          isDark ? "border-stone-800" : "border-orange-100"
+          isDark ? "bg-[#24201D] border-stone-700" : "bg-[#FFE9D1] border-orange-300"
         }`}
       >
         <div className="flex items-center space-x-2.5">
-          <Layers className="w-4 h-4 text-[#FF6B00]" />
-          <h2 className={`text-sm sm:text-base font-bold tracking-tight ${isDark ? "text-white" : "text-stone-900"}`}>
+          <Layers className="w-5 h-5 text-[#FF6B00]" />
+          <h2 className={`text-base sm:text-lg font-extrabold tracking-tight ${isDark ? "text-white" : "text-stone-950"}`}>
             Institutional ETF Net Flow Tracker
           </h2>
         </div>
 
         {/* Filter Pills */}
         <div
-          className={`flex items-center rounded-lg p-0.5 border text-xs font-mono ${
-            isDark ? "bg-[#1A1816] border-stone-800" : "bg-stone-100 border-stone-200"
+          className={`flex items-center rounded-lg p-0.5 border text-xs sm:text-sm font-mono font-bold ${
+            isDark ? "bg-[#181512] border-stone-700" : "bg-white/80 border-orange-300 shadow-2xs"
           }`}
         >
           <button
             onClick={() => setActiveCategory("ALL")}
-            className={`px-2.5 py-1 rounded transition-colors cursor-pointer ${
+            className={`px-3 py-1 rounded transition-colors cursor-pointer ${
               activeCategory === "ALL"
-                ? "bg-[#FF6B00] text-white font-bold"
+                ? "bg-[#FF6B00] text-white font-extrabold"
                 : isDark
-                ? "text-stone-400 hover:text-white"
-                : "text-stone-600 hover:text-stone-900"
+                ? "text-stone-300 hover:text-white"
+                : "text-stone-700 hover:text-stone-950"
             }`}
           >
             All
           </button>
           <button
             onClick={() => setActiveCategory("CRYPTO_SPOT")}
-            className={`px-2.5 py-1 rounded transition-colors cursor-pointer ${
+            className={`px-3 py-1 rounded transition-colors cursor-pointer ${
               activeCategory === "CRYPTO_SPOT"
-                ? "bg-[#FF6B00] text-white font-bold"
+                ? "bg-[#FF6B00] text-white font-extrabold"
                 : isDark
-                ? "text-stone-400 hover:text-white"
-                : "text-stone-600 hover:text-stone-900"
+                ? "text-stone-300 hover:text-white"
+                : "text-stone-700 hover:text-stone-950"
             }`}
           >
             Crypto Spot
           </button>
           <button
             onClick={() => setActiveCategory("TECH_EQUITY")}
-            className={`px-2.5 py-1 rounded transition-colors cursor-pointer ${
+            className={`px-3 py-1 rounded transition-colors cursor-pointer ${
               activeCategory === "TECH_EQUITY"
-                ? "bg-[#FF6B00] text-white font-bold"
+                ? "bg-[#FF6B00] text-white font-extrabold"
                 : isDark
-                ? "text-stone-400 hover:text-white"
-                : "text-stone-600 hover:text-stone-900"
+                ? "text-stone-300 hover:text-white"
+                : "text-stone-700 hover:text-stone-950"
             }`}
           >
             Tech Equities
@@ -166,37 +166,41 @@ export const EtfFlowTracker: React.FC<EtfFlowTrackerProps> = ({ theme = "light" 
 
       {/* Cross-Asset Rotation Banner */}
       <div
-        className={`p-3.5 border-b grid grid-cols-2 gap-3 text-xs sm:text-sm font-mono ${
-          isDark ? "bg-[#0E0C0A] border-stone-800" : "bg-orange-50/40 border-orange-100"
+        className={`p-4 border-b grid grid-cols-2 gap-3 text-xs sm:text-sm font-mono ${
+          isDark ? "bg-[#181512] border-stone-700" : "bg-[#FFF4E5] border-orange-200"
         }`}
       >
         <div
-          className={`p-3 rounded-lg border ${
-            isDark ? "bg-[#161412] border-stone-800" : "bg-white border-orange-200/60"
+          className={`p-3.5 rounded-xl border ${
+            isDark ? "bg-[#24201D] border-stone-700" : "bg-white border-2 border-orange-200 shadow-2xs"
           }`}
         >
-          <span className="text-xs text-stone-400 uppercase tracking-wider block font-bold">Spot Crypto Inflow (24h)</span>
-          <div className="flex flex-wrap items-center gap-1.5 mt-1">
-            <span className="text-base sm:text-lg font-bold text-emerald-500 tabular-nums">
+          <span className={`text-xs uppercase tracking-wider block font-extrabold ${isDark ? "text-stone-400" : "text-stone-600"}`}>
+            Spot Crypto Inflow (24h)
+          </span>
+          <div className="flex flex-wrap items-center gap-2 mt-1">
+            <span className="text-lg sm:text-xl font-extrabold text-emerald-500 tabular-nums">
               +${totalCryptoInflowToday.toFixed(1)}M
             </span>
-            <span className="text-xs font-bold text-emerald-600 bg-emerald-500/10 px-1.5 py-0.5 rounded">
+            <span className="text-xs font-extrabold text-emerald-700 bg-emerald-500/20 px-2 py-0.5 rounded border border-emerald-500/30">
               IBIT + FBTC Lead
             </span>
           </div>
         </div>
 
         <div
-          className={`p-3 rounded-lg border ${
-            isDark ? "bg-[#161412] border-stone-800" : "bg-white border-orange-200/60"
+          className={`p-3.5 rounded-xl border ${
+            isDark ? "bg-[#24201D] border-stone-700" : "bg-white border-2 border-orange-200 shadow-2xs"
           }`}
         >
-          <span className="text-xs text-stone-400 uppercase tracking-wider block font-bold">Tech Equity Inflow (24h)</span>
-          <div className="flex flex-wrap items-center gap-1.5 mt-1">
-            <span className="text-base sm:text-lg font-bold text-emerald-500 tabular-nums">
+          <span className={`text-xs uppercase tracking-wider block font-extrabold ${isDark ? "text-stone-400" : "text-stone-600"}`}>
+            Tech Equity Inflow (24h)
+          </span>
+          <div className="flex flex-wrap items-center gap-2 mt-1">
+            <span className="text-lg sm:text-xl font-extrabold text-emerald-500 tabular-nums">
               +${totalEquityInflowToday.toFixed(1)}M
             </span>
-            <span className="text-[10px] font-semibold text-emerald-600 bg-emerald-500/10 px-1 rounded">
+            <span className="text-xs font-extrabold text-emerald-700 bg-emerald-500/20 px-2 py-0.5 rounded border border-emerald-500/30">
               QQQ + SMH Lead
             </span>
           </div>
@@ -210,26 +214,26 @@ export const EtfFlowTracker: React.FC<EtfFlowTrackerProps> = ({ theme = "light" 
           return (
             <div
               key={etf.ticker}
-              className={`p-3 flex items-center justify-between hover:bg-orange-500/5 transition-colors text-xs font-mono ${
-                isDark ? "divide-stone-800" : "divide-stone-100"
+              className={`p-3.5 flex items-center justify-between hover:bg-orange-500/10 transition-colors text-xs sm:text-sm font-mono ${
+                isDark ? "border-b border-stone-800" : "border-b border-orange-100"
               }`}
             >
               <div className="flex items-center space-x-3">
                 <div
-                  className={`w-9 h-9 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 ${
+                  className={`w-10 h-10 rounded-xl flex items-center justify-center font-extrabold text-xs sm:text-sm shrink-0 shadow-2xs ${
                     etf.category === "CRYPTO_SPOT"
-                      ? "bg-[#F7931A]/10 text-[#F7931A] border border-[#F7931A]/20"
-                      : "bg-[#0052FF]/10 text-[#0052FF] border border-[#0052FF]/20"
+                      ? "bg-[#F7931A]/15 text-[#F7931A] border-2 border-[#F7931A]/30"
+                      : "bg-[#0052FF]/15 text-[#0052FF] border-2 border-[#0052FF]/30"
                   }`}
                 >
                   {etf.ticker}
                 </div>
                 <div>
-                  <div className="flex items-center space-x-1.5">
-                    <span className={`font-bold ${isDark ? "text-white" : "text-stone-900"}`}>{etf.ticker}</span>
-                    <span className="text-[10px] text-stone-400 font-sans">{etf.name}</span>
+                  <div className="flex items-center space-x-2">
+                    <span className={`font-extrabold text-sm sm:text-base ${isDark ? "text-white" : "text-stone-950"}`}>{etf.ticker}</span>
+                    <span className={`text-xs font-sans font-medium ${isDark ? "text-stone-400" : "text-stone-600"}`}>{etf.name}</span>
                   </div>
-                  <span className="text-[10px] text-stone-400 block font-sans truncate max-w-[200px]">
+                  <span className={`text-xs block font-sans truncate max-w-[240px] font-normal ${isDark ? "text-stone-400" : "text-stone-600"}`}>
                     {etf.primaryHoldings}
                   </span>
                 </div>
@@ -237,16 +241,16 @@ export const EtfFlowTracker: React.FC<EtfFlowTrackerProps> = ({ theme = "light" 
 
               <div className="text-right">
                 <div
-                  className={`font-bold tabular-nums flex items-center justify-end space-x-0.5 ${
+                  className={`font-extrabold text-sm sm:text-base tabular-nums flex items-center justify-end space-x-0.5 ${
                     isPositive ? "text-emerald-500" : "text-rose-500"
                   }`}
                 >
-                  {isPositive ? <ArrowUpRight className="w-3.5 h-3.5" /> : <ArrowDownRight className="w-3.5 h-3.5" />}
+                  {isPositive ? <ArrowUpRight className="w-4 h-4" /> : <ArrowDownRight className="w-4 h-4" />}
                   <span>
                     {isPositive ? `+$${etf.flowTodayM.toFixed(1)}M` : `-$${Math.abs(etf.flowTodayM).toFixed(1)}M`}
                   </span>
                 </div>
-                <div className="text-[10px] text-stone-400 tabular-nums">
+                <div className={`text-xs font-bold tabular-nums ${isDark ? "text-stone-400" : "text-stone-600"}`}>
                   5D: +${etf.flow5dM.toFixed(1)}M • AUM: ${etf.aumB}B
                 </div>
               </div>

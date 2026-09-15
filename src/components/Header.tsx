@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { ShieldCheck, Sparkles, GraduationCap, Clock, LayoutDashboard, Compass, Sun, Moon } from "lucide-react";
+import { NexusLogo } from "./NexusLogo";
 
 interface HeaderProps {
   currentView?: "landing" | "terminal";
@@ -39,22 +40,16 @@ export const Header: React.FC<HeaderProps> = ({
       }`}
     >
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 h-15 flex items-center justify-between">
-        {/* Left: Brand & Editorial Identity */}
+        {/* Left: Brand & Official Vector Logo */}
         <div className="flex items-center space-x-4">
-          <button
+          <NexusLogo
+            size={28}
+            showWordmark={true}
+            showTagline={false}
+            theme={theme}
             onClick={() => onToggleView && onToggleView("landing")}
-            className="flex items-center space-x-2 text-left group cursor-pointer"
-          >
-            <span className="w-3 h-3 rounded-full bg-[#FF6B00] shadow-[0_0_10px_rgba(255,107,0,0.8)]" />
-            <span
-              className={`font-mono font-extrabold tracking-tight text-lg transition-colors ${
-                isDark ? "text-white group-hover:text-orange-400" : "text-stone-950 group-hover:text-orange-600"
-              }`}
-            >
-              NEXUS
-            </span>
-            <span className="text-[#FF6B00] font-mono text-sm font-bold">/ DESK</span>
-          </button>
+            className="cursor-pointer"
+          />
 
           <span className={`hidden md:inline-block h-5 w-px ${isDark ? "bg-stone-700" : "bg-orange-300"}`} />
           <span

@@ -15,6 +15,13 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "NexusDesk — AI Stock Trading & 24/7 rToken Research Terminal",
   description: "Natural-language-driven AI research desk for US stocks and 24/7 tokenized equities. Bitget AI Base Camp S2 Hackathon.",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({

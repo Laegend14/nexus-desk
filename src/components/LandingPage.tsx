@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { StockGapData } from "@/services/rTokenService";
 import { StockLogo } from "./StockLogo";
+import { NexusLogo } from "./NexusLogo";
 
 interface LandingPageProps {
   stocks: StockGapData[];
@@ -45,6 +46,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left Column: Editorial Headline & Value Prop */}
           <div className="lg:col-span-7 space-y-6">
+            <NexusLogo
+              size={42}
+              showWordmark={true}
+              showTagline={true}
+              theme={theme}
+              className="mb-1"
+            />
+
             <h1
               className={`text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight font-sans ${
                 isDark ? "text-white" : "text-stone-950"
@@ -338,10 +347,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         }`}
       >
         <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs sm:text-sm font-bold">
-          <div className="flex items-center space-x-2">
-            <span className="w-3 h-3 rounded-sm bg-[#FF6B00]" />
-            <span className="font-extrabold text-[#FF6B00]">NexusDesk Dual-Lens Research Station</span>
-            <span>• Bitget Base Camp Season 2</span>
+          <div className="flex items-center space-x-3">
+            <NexusLogo size={22} showWordmark={true} theme={theme} />
+            <span className={isDark ? "text-stone-400" : "text-stone-600"}>• Bitget Base Camp Season 2</span>
           </div>
 
           <div className="flex items-center space-x-4">

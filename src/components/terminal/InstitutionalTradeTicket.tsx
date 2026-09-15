@@ -74,7 +74,7 @@ export const InstitutionalTradeTicket: React.FC<InstitutionalTradeTicketProps> =
     const playbookData = {
       version: "2.0-mcp-ui",
       platform: "Bitget Playbook",
-      author: "Federal University of Technology Minna - NexusDesk Team",
+      author: "NexusDesk Research Team",
       strategyIdentifier: `NEXUS_${ticker}_24x7_EQUITY_ALPHA`,
       underlyingAsset: `${ticker}/USDT`,
       executionEngine: "Bitget UTA v3",

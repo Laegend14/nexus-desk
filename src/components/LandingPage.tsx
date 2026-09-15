@@ -349,13 +349,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs sm:text-sm font-bold">
           <div className="flex items-center space-x-3">
             <NexusLogo size={22} showWordmark={true} theme={theme} />
-            <span className={isDark ? "text-stone-400" : "text-stone-600"}>• Bitget Base Camp Season 2</span>
           </div>
 
-          <div className="flex items-center space-x-4">
-            <span className="flex items-center space-x-1.5">
-              <GraduationCap className="w-4 h-4 text-[#FF6B00]" />
-              <span>Federal University of Technology Minna</span>
+          <div className="flex items-center space-x-3">
+            <span className={isDark ? "text-stone-400" : "text-stone-600"}>
+              24/7 Cross-Asset Terminal
             </span>
             <span>•</span>
             <span>Qwen 3.8-Max • UTA v3</span>

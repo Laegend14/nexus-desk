@@ -76,10 +76,17 @@ export const BITGET_RESEARCH_SKILLS = [
   },
 ];
 
+export interface ChatMessage {
+  role: "user" | "assistant";
+  content: string;
+  timestamp?: string;
+}
+
 export async function runStockResearch(
   ticker: string,
   query: string,
-  activeSkills: string[] = ["macro-analyst", "market-intel", "news-briefing", "sentiment-analyst", "technical-analysis"]
+  activeSkills: string[] = ["macro-analyst", "market-intel", "news-briefing", "sentiment-analyst", "technical-analysis"],
+  history: ChatMessage[] = []
 ): Promise<ResearchResult> {
   const apiKey = process.env.QWEN_API_KEY || "WJseAHj2jBD4SFAs";
   const baseUrl = process.env.QWEN_BASE_URL || "https://hackathon.bitgetops.com/v1";
@@ -165,6 +172,16 @@ Always output a clean, valid JSON object matching this schema exactly:
 Return ONLY valid JSON. No markdown code blocks, no other text.`;
 
   try {
+    const formattedHistory = (history || []).slice(-6).map((m) => ({
+      role: m.role,
+      content:
+        m.role === "assistant"
+          ? typeof m.content === "string"
+            ? m.content.slice(0, 400)
+            : JSON.stringify(m.content).slice(0, 400)
+          : m.content,
+    }));
+
     const response = await fetch(`${baseUrl}/chat/completions`, {
       method: "POST",
       headers: {
@@ -175,7 +192,13 @@ Return ONLY valid JSON. No markdown code blocks, no other text.`;
         model,
         messages: [
           { role: "system", content: systemPrompt },
-          { role: "user", content: `Execute Dual-Lens research on ${ticker.toUpperCase()} with active skills [${activeSkills.join(", ")}]: ${query}` },
+          ...formattedHistory,
+          {
+            role: "user",
+            content: `Execute Dual-Lens research on ${ticker.toUpperCase()} with active skills [${activeSkills.join(
+              ", "
+            )}]: ${query}`,
+          },
         ],
         temperature: 0.25,
         max_tokens: 1500,
@@ -197,11 +220,90 @@ Return ONLY valid JSON. No markdown code blocks, no other text.`;
       query,
       ticker: ticker.toUpperCase(),
       activeSkills,
+      playbookSpec: {
+        ...(parsed.playbookSpec || {}),
+        _nexusMeta: {
+          skillSummaries: parsed.skillSummaries,
+          crossAssetCorrelation: parsed.crossAssetCorrelation,
+          suggestedEntry: parsed.suggestedEntry,
+          suggestedStopLoss: parsed.suggestedStopLoss,
+          suggestedTakeProfit: parsed.suggestedTakeProfit,
+          recommendedBias: parsed.recommendedBias,
+          slippageEstimatePct: parsed.slippageEstimatePct,
+        },
+      },
     };
   } catch (error) {
     console.error("Qwen API fetch error, using robust high-conviction fallback:", error);
     return getHeuristicStockAnalysis(ticker, query, activeSkills);
   }
+}
+
+export function reconstructResearchResultFromDbRecord(record: any): ResearchResult {
+  const playbook =
+    typeof record.playbook_spec === "string"
+      ? (() => {
+          try {
+            return JSON.parse(record.playbook_spec);
+          } catch {
+            return {};
+          }
+        })()
+      : record.playbook_spec || {};
+
+  const meta = playbook._nexusMeta || {};
+  const sym = record.ticker || "NVDA";
+  const defaultHeuristic = getHeuristicStockAnalysis(
+    sym,
+    record.user_query || "",
+    ["macro-analyst", "market-intel", "news-briefing", "sentiment-analyst", "technical-analysis"]
+  );
+
+  let transmissionChain = defaultHeuristic.transmissionChain;
+  if (record.transmission_chain) {
+    try {
+      transmissionChain =
+        typeof record.transmission_chain === "string"
+          ? JSON.parse(record.transmission_chain)
+          : record.transmission_chain;
+    } catch {
+      // fallback
+    }
+  }
+
+  return {
+    ticker: sym,
+    query: record.user_query || "",
+    catalystSummary: record.catalyst_summary || defaultHeuristic.catalystSummary,
+    transmissionChain,
+    reasoning: record.qwen_reasoning || defaultHeuristic.reasoning,
+    impliedGapForecast: record.implied_gap_forecast || "+1.8% to +2.4%",
+    recommendedBias: meta.recommendedBias || defaultHeuristic.recommendedBias,
+    riskRewardRatio: record.risk_reward_ratio || defaultHeuristic.riskRewardRatio,
+    suggestedEntry: meta.suggestedEntry ?? defaultHeuristic.suggestedEntry,
+    suggestedStopLoss: meta.suggestedStopLoss ?? defaultHeuristic.suggestedStopLoss,
+    suggestedTakeProfit: meta.suggestedTakeProfit ?? defaultHeuristic.suggestedTakeProfit,
+    slippageEstimatePct: meta.slippageEstimatePct ?? defaultHeuristic.slippageEstimatePct,
+    activeSkills: [
+      "macro-analyst",
+      "market-intel",
+      "news-briefing",
+      "sentiment-analyst",
+      "technical-analysis",
+    ],
+    skillSummaries: meta.skillSummaries || defaultHeuristic.skillSummaries,
+    crossAssetCorrelation: meta.crossAssetCorrelation || defaultHeuristic.crossAssetCorrelation,
+    playbookSpec: {
+      strategyName: playbook.strategyName || `NexusDesk_${sym}_DualLens_Playbook`,
+      underlying: playbook.underlying || sym,
+      triggerCondition:
+        playbook.triggerCondition || "Spread(rToken, FridayClose) >= 1.5% at Monday 09:15 EST",
+      takeProfitPct: playbook.takeProfitPct ?? 3.5,
+      stopLossPct: playbook.stopLossPct ?? 1.2,
+      positionSizePct: playbook.positionSizePct ?? 20,
+      regimeFilter: playbook.regimeFilter || "IV_Percentile < 70",
+    },
+  };
 }
 
 function getHeuristicStockAnalysis(ticker: string, query: string, activeSkills: string[]): ResearchResult {

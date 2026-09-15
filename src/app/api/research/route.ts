@@ -9,28 +9,41 @@ export async function POST(req: Request) {
       ticker = "NVDA",
       query = "Analyze weekend gap and macro transmission",
       activeSkills,
+      history = [],
     } = body;
 
-    const analysis = await runStockResearch(ticker, query, activeSkills);
+    const analysis = await runStockResearch(ticker, query, activeSkills, history);
 
-    // Try to persist to Supabase if credentials are valid
+    let memoId: string | null = null;
+
+    // Persist to Supabase if credentials are valid
     try {
       const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
       const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
       if (supabaseUrl && supabaseKey) {
         const supabase = createClient(supabaseUrl, supabaseKey);
-        await supabase.from("research_memos").insert([
-          {
-            ticker: analysis.ticker,
-            user_query: query,
-            qwen_reasoning: analysis.reasoning,
-            catalyst_summary: analysis.catalystSummary,
-            transmission_chain: JSON.stringify(analysis.transmissionChain),
-            implied_gap_forecast: analysis.impliedGapForecast,
-            risk_reward_ratio: analysis.riskRewardRatio,
-            playbook_spec: analysis.playbookSpec,
-          },
-        ]);
+        const { data: insertedData, error: dbError } = await supabase
+          .from("research_memos")
+          .insert([
+            {
+              ticker: analysis.ticker,
+              user_query: query,
+              qwen_reasoning: analysis.reasoning,
+              catalyst_summary: analysis.catalystSummary,
+              transmission_chain: JSON.stringify(analysis.transmissionChain),
+              implied_gap_forecast: analysis.impliedGapForecast,
+              risk_reward_ratio: analysis.riskRewardRatio,
+              playbook_spec: analysis.playbookSpec,
+            },
+          ])
+          .select("id")
+          .single();
+
+        if (dbError) {
+          console.warn("Supabase record write notice:", dbError.message);
+        } else if (insertedData) {
+          memoId = insertedData.id;
+        }
       }
     } catch (dbErr) {
       console.warn("Supabase record write optional notice:", dbErr);
@@ -39,6 +52,7 @@ export async function POST(req: Request) {
     return NextResponse.json({
       success: true,
       data: analysis,
+      memoId,
       timestamp: new Date().toISOString(),
     });
   } catch (error: any) {

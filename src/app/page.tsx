@@ -271,6 +271,7 @@ export default function Home() {
               {mobileTab === "ai" && (
                 <ResearchDesk
                   selectedTicker={selectedTicker}
+                  onSelectTicker={(ticker) => setSelectedTicker(ticker)}
                   onAnalysisGenerated={(analysis) => {
                     setActiveAnalysis(analysis);
                     showToast(`Synthesized Dual-Lens memo for ${analysis.ticker} via Qwen 3.8-Max`);
@@ -368,6 +369,7 @@ export default function Home() {
                   <div className="col-span-4 flex flex-col space-y-4">
                     <ResearchDesk
                       selectedTicker={selectedTicker}
+                      onSelectTicker={(ticker) => setSelectedTicker(ticker)}
                       onAnalysisGenerated={(analysis) => {
                         setActiveAnalysis(analysis);
                         showToast(`Synthesized Dual-Lens memo for ${analysis.ticker} via Qwen 3.8-Max`);
@@ -404,6 +406,7 @@ export default function Home() {
                   <div className="col-span-8 flex flex-col space-y-4">
                     <ResearchDesk
                       selectedTicker={selectedTicker}
+                      onSelectTicker={(ticker) => setSelectedTicker(ticker)}
                       onAnalysisGenerated={(analysis) => {
                         setActiveAnalysis(analysis);
                         showToast(`Synthesized Dual-Lens memo for ${analysis.ticker} via Qwen 3.8-Max`);
@@ -442,6 +445,7 @@ export default function Home() {
                   <div className="col-span-4 flex flex-col space-y-4">
                     <ResearchDesk
                       selectedTicker={selectedTicker}
+                      onSelectTicker={(ticker) => setSelectedTicker(ticker)}
                       onAnalysisGenerated={(analysis) => {
                         setActiveAnalysis(analysis);
                         showToast(`Synthesized Dual-Lens memo for ${analysis.ticker} via Qwen 3.8-Max`);

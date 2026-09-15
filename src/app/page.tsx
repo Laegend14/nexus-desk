@@ -95,6 +95,20 @@ export default function Home() {
         onToggleTheme={() => setTheme((t) => (t === "light" ? "dark" : "light"))}
       />
 
+      {/* Continuous Moving Stocks Ticker Tape with Official Logos & Live Prices - Active on Landing Page & Terminal */}
+      <TickerTape
+        stocks={stocks}
+        selectedTicker={selectedTicker}
+        onSelectTicker={(ticker) => {
+          setSelectedTicker(ticker);
+          if (currentView === "landing") {
+            setCurrentView("terminal");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }}
+        theme={theme}
+      />
+
       {/* Main View: Landing Page or MCP-UI Trading Terminal */}
       {currentView === "landing" ? (
         <LandingPage
@@ -104,13 +118,6 @@ export default function Home() {
         />
       ) : (
         <div className="flex-1 flex flex-col">
-          {/* Continuous Ticker Tape with Official Logos & Live Prices */}
-          <TickerTape
-            stocks={stocks}
-            selectedTicker={selectedTicker}
-            onSelectTicker={(ticker) => setSelectedTicker(ticker)}
-            theme={theme}
-          />
 
           {/* Desktop Workstation Sub-Header Toolbar (Layout Switcher) */}
           <div

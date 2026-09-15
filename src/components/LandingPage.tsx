@@ -45,17 +45,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left Column: Editorial Headline & Value Prop */}
           <div className="lg:col-span-7 space-y-6">
-            <div
-              className={`inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-mono border-2 font-extrabold ${
-                isDark
-                  ? "bg-[#25211D] border-stone-700 text-orange-400"
-                  : "bg-[#FFE9D1] border-orange-300 text-orange-950 shadow-2xs"
-              }`}
-            >
-              <span className="w-2.5 h-2.5 rounded-full bg-[#FF6B00] animate-pulse" />
-              <span>Bitget AI Base Camp S2 • Track 3: AI Trading Desk (Concept 4)</span>
-            </div>
-
             <h1
               className={`text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight font-sans ${
                 isDark ? "text-white" : "text-stone-950"

@@ -28,7 +28,7 @@
 
 The end-to-end browser walkthrough was executed and recorded live on the working station:
 
-* **Standard MP4 Video File:** [`docs/ai_desk_walkthrough.mp4`](./ai_desk_walkthrough.mp4) (H.264 / 1080p, 58s full walkthrough)
+* **Standard MP4 Video File:** [`docs/ai_desk_walkthrough.mp4`](./ai_desk_walkthrough.mp4) (H.264 / 1366x692, 2m 42s official walkthrough with spoken voiceover narration and burnt-in lower-third captions)
 * **WebP Animation File:** [`docs/ai_desk_walkthrough.webp`](./ai_desk_walkthrough.webp)  
 * **Demonstrated Flow:** Landing Page $\rightarrow$ Asset Selection $\rightarrow$ Multi-Angle Synthesis $\rightarrow$ Trade Memo $\rightarrow$ Bitget UTA v3 Paper Execution $\rightarrow$ Playbook Strategy Export $\rightarrow$ Supabase Historical Memory Drawer.
 

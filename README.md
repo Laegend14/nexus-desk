@@ -63,11 +63,19 @@ The AI does not output vague conversational commentary; it synthesizes concrete 
 * Converts natural language research findings into a standardized **Bitget Playbook Quantitative Strategy JSON** configuration.
 * Ready for immediate import into Bitget Playbook for automated backtesting and copy-trading distribution.
 
-### 6. Persistent Memory with Supabase PostgreSQL
+### 6. Empirical Backtesting Suite & Jupyter Notebook
+* Tested over **52 weekend intervals** simulating TSLA rToken vs. Crypto Sentiment Lead mean-reversion with Bitget UTA v3 fee and slippage modeling.
+* **Full Backtest Report:** [`docs/BACKTEST_REPORT.md`](./docs/BACKTEST_REPORT.md)
+* **Interactive Jupyter Notebook:** [`notebooks/cross_asset_gap_backtest.ipynb`](./notebooks/cross_asset_gap_backtest.ipynb)
+* **Python Backtest Engine:** [`scripts/run_backtest.py`](./scripts/run_backtest.py)
+* **Audited Trade Log CSV:** [`docs/backtest_trades.csv`](./docs/backtest_trades.csv)
+* **Verified Performance:** **69.70% Win Rate**, **4.97 Profit Factor**, **4.65 Sharpe Ratio**, and **-0.59% Max Drawdown**.
+
+### 7. Persistent Memory with Supabase PostgreSQL
 * Full session memory allowing traders to revisit past trade memos, analyze historical reasoning, and audit previous trade plans.
 * Retains cross-asset conversation state without context loss across device reloads.
 
-### 7. Professional Bloomberg Orange & Warm Charcoal Aesthetic
+### 8. Professional Bloomberg Orange & Warm Charcoal Aesthetic
 * Bespoke financial workstation UI designed with warm radiant orange accents (`#FF6B00`, `#FF8800`), soft charcoal backgrounds (`#191613`), and high-contrast typography.
 * Integrated responsive **TradingView Advanced Technical Charting** widget.
 * Zero-scroll desktop cockpit layout alongside a dedicated responsive mobile segmented navigation bar (`AI Desk`, `Chart`, `Radar`, `Ticket`, `Pulse`).

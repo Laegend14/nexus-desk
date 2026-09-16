@@ -34,6 +34,18 @@ The end-to-end browser walkthrough was executed and recorded live on the working
 
 ---
 
+## Quantitative Backtest Report & Code
+
+As required by the Track 3 evaluation rubric (*"Backtest reports must include the code or notebook that generated them"*), the empirical performance of this AI cross-asset gap strategy has been simulated and audited:
+
+* **Comprehensive Backtest Report:** [`docs/BACKTEST_REPORT.md`](./BACKTEST_REPORT.md)
+* **Interactive Jupyter Notebook:** [`notebooks/cross_asset_gap_backtest.ipynb`](../notebooks/cross_asset_gap_backtest.ipynb)
+* **Python Backtest Simulation Script:** [`scripts/run_backtest.py`](../scripts/run_backtest.py)
+* **Audited Trade Log CSV:** [`docs/backtest_trades.csv`](./backtest_trades.csv)
+* **Strategy Performance:** 52 weekend test period yielding **69.70% Win Rate**, **4.97 Profit Factor**, **4.65 Sharpe Ratio**, and **-0.59% Max Drawdown** net of Bitget UTA v3 fees & slippage.
+
+---
+
 ## End-to-End Walkthrough Steps
 
 ### Phase 1 · Market Context & Catalyst Detection

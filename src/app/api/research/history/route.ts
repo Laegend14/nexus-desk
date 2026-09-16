@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { getSupabaseClient } from "@/lib/supabase";
 
 export async function GET(req: Request) {
   try {
@@ -7,14 +7,11 @@ export async function GET(req: Request) {
     const ticker = searchParams.get("ticker");
     const limit = parseInt(searchParams.get("limit") || "60", 10);
 
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
-
-    if (!supabaseUrl || !supabaseKey) {
+    const supabase = getSupabaseClient();
+    if (!supabase) {
       return NextResponse.json({ success: true, data: [] });
     }
 
-    const supabase = createClient(supabaseUrl, supabaseKey);
     let queryBuilder = supabase
       .from("research_memos")
       .select("*")
@@ -52,14 +49,10 @@ export async function DELETE(req: Request) {
     const id = searchParams.get("id");
     const clearAll = searchParams.get("clearAll") === "true";
 
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
-
-    if (!supabaseUrl || !supabaseKey) {
+    const supabase = getSupabaseClient();
+    if (!supabase) {
       return NextResponse.json({ success: true });
     }
-
-    const supabase = createClient(supabaseUrl, supabaseKey);
 
     if (clearAll) {
       const { error } = await supabase

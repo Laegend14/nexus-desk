@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { executeBitgetPaperOrder } from "@/services/bitgetTradeService";
-import { createClient } from "@supabase/supabase-js";
+import { getSupabaseClient } from "@/lib/supabase";
 
 export async function POST(req: Request) {
   try {
@@ -18,10 +18,8 @@ export async function POST(req: Request) {
 
     // Try to record execution in Supabase paper_trade_journal
     try {
-      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-      const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
-      if (supabaseUrl && supabaseKey) {
-        const supabase = createClient(supabaseUrl, supabaseKey);
+      const supabase = getSupabaseClient();
+      if (supabase) {
         await supabase.from("paper_trade_journal").insert([
           {
             order_id: result.orderId,

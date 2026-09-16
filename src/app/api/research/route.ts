@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { runStockResearch } from "@/services/qwenService";
-import { createClient } from "@supabase/supabase-js";
+import { getSupabaseClient } from "@/lib/supabase";
 
 export async function POST(req: Request) {
   try {
@@ -18,10 +18,8 @@ export async function POST(req: Request) {
 
     // Persist to Supabase if credentials are valid
     try {
-      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-      const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
-      if (supabaseUrl && supabaseKey) {
-        const supabase = createClient(supabaseUrl, supabaseKey);
+      const supabase = getSupabaseClient();
+      if (supabase) {
         const { data: insertedData, error: dbError } = await supabase
           .from("research_memos")
           .insert([

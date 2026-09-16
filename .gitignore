@@ -55,3 +55,11 @@ CLAUDE.md
 .antigravity/
 .system_generated/
 scratch/
+
+# large media & screen recordings
+*.mp4
+docs/*.webp
+!public/apple-touch-icon.png
+!public/favicon.ico
+!public/favicon.svg
+!public/nexus_logo.svg

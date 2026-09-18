@@ -88,7 +88,7 @@ export async function runStockResearch(
   activeSkills: string[] = ["macro-analyst", "market-intel", "news-briefing", "sentiment-analyst", "technical-analysis"],
   history: ChatMessage[] = []
 ): Promise<ResearchResult> {
-  const apiKey = process.env.QWEN_API_KEY || "WJseAHj2jBD4SFAs";
+  const apiKey = process.env.QWEN_API_KEY || "";
   const baseUrl = process.env.QWEN_BASE_URL || "https://hackathon.bitgetops.com/v1";
   const model = process.env.QWEN_MODEL || "qwen3.8-max";
 

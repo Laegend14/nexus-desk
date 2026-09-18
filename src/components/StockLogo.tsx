@@ -168,6 +168,107 @@ export const StockLogo: React.FC<StockLogoProps> = ({
         </svg>
       );
 
+    case "META":
+      return (
+        <svg
+          viewBox="0 0 24 24"
+          width={size}
+          height={size}
+          className={`shrink-0 ${className}`}
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="24" height="24" rx="5" fill="#0A0A0A" />
+          <path
+            d="M16.9 8.2c-1.3 0-2.4.7-3.1 1.7-.8-1-1.9-1.7-3.1-1.7-2.3 0-4.2 2-4.2 4.4 0 2.3 1.9 4.3 4.2 4.3 1.2 0 2.3-.7 3.1-1.7.8 1 1.9 1.7 3.1 1.7 2.3 0 4.2-2 4.2-4.3 0-2.4-1.9-4.4-4.2-4.4zm-6.2 6.5c-1.2 0-2.2-1-2.2-2.2 0-1.2 1-2.2 2.2-2.2 1 0 1.8.7 2.1 1.7-.3 1-1.1 1.7-2.1 1.7zm6.2 0c-1 0-1.8-.7-2.1-1.7.3-1 1.1-1.7 2.1-1.7 1.2 0 2.2 1 2.2 2.2 0 1.2-1 2.2-2.2 2.2z"
+            fill="#0668E1"
+          />
+        </svg>
+      );
+
+    case "GOOGL":
+    case "GOOG":
+      return (
+        <svg
+          viewBox="0 0 24 24"
+          width={size}
+          height={size}
+          className={`shrink-0 ${className}`}
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="24" height="24" rx="5" fill="#0A0A0A" />
+          <path
+            d="M17.6 12.2c0-.5 0-.9-.1-1.4H12v2.6h3.2c-.1.8-.6 1.5-1.3 2v1.6h2.1c1.2-1.1 1.8-2.8 1.8-4.8z"
+            fill="#4285F4"
+          />
+          <path
+            d="M12 18c1.6 0 3-.5 4-1.5l-2.1-1.6c-.5.4-1.2.6-1.9.6-1.5 0-2.7-1-3.2-2.4H6.6v1.6C7.6 16.5 9.6 18 12 18z"
+            fill="#34A853"
+          />
+          <path
+            d="M8.8 13.1c-.1-.4-.2-.8-.2-1.1s.1-.8.2-1.1V9.3H6.6c-.5 1-1.1 2.1-1.1 2.7 0 .6.6 1.7 1.1 2.7l2.2-1.6z"
+            fill="#FBBC05"
+          />
+          <path
+            d="M12 8c.9 0 1.7.3 2.3.9l1.7-1.7C15 6.3 13.6 5.8 12 5.8c-2.4 0-4.4 1.5-5.4 3.5l2.2 1.6C9.3 9.5 10.5 8 12 8z"
+            fill="#EA4335"
+          />
+        </svg>
+      );
+
+    case "AMD":
+      return (
+        <svg
+          viewBox="0 0 24 24"
+          width={size}
+          height={size}
+          className={`shrink-0 ${className}`}
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="24" height="24" rx="5" fill="#0A0A0A" />
+          <path
+            d="M6 6h12v12H6V6zm9.5 9.5l-3.5-3.5 3.5-3.5v7zm-5-7L7 12l3.5 3.5v-7z"
+            fill="#ED1C24"
+          />
+        </svg>
+      );
+
+    case "PLTR":
+      return (
+        <svg
+          viewBox="0 0 24 24"
+          width={size}
+          height={size}
+          className={`shrink-0 ${className}`}
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="24" height="24" rx="5" fill="#0A0A0A" />
+          <circle cx="12" cy="11.5" r="4.2" stroke="#FFFFFF" strokeWidth="1.8" />
+          <path d="M12 15.7v3.2m-3 0h6" stroke="#FFFFFF" strokeWidth="1.6" strokeLinecap="round" />
+        </svg>
+      );
+
+    case "MARA":
+      return (
+        <svg
+          viewBox="0 0 24 24"
+          width={size}
+          height={size}
+          className={`shrink-0 ${className}`}
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="24" height="24" rx="5" fill="#0A0A0A" />
+          <path
+            d="M6 17V7l3.5 4.5L12 7l2.5 4.5L18 7v10h-2.5v-5.5L13 14.5h-2L8.5 11.5V17H6z"
+            fill="#F7931A"
+          />
+        </svg>
+      );
+
     case "BTC":
       return (
         <svg

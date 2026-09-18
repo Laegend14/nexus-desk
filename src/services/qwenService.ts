@@ -93,7 +93,7 @@ export async function runStockResearch(
   const model = process.env.QWEN_MODEL || "qwen3.8-max";
 
   const systemPrompt = `You are the lead quantitative strategist at NexusDesk, a Dual-Lens (Crypto <-> US Equities) Cross-Asset Research Station for the Bitget AI Base Camp Hackathon Season 2 (Track 3: AI Trading Desk).
-You specialize in bridging US Equities (NVDA, TSLA, AAPL, MSTR, COIN, AMZN, MSFT) and 24/7 Tokenized Stocks (rTokens) with crypto liquidity (BTC, ETH, SOL, NEAR, RNDR, AI meme-coins).
+You specialize in bridging US Equities (NVDA, TSLA, AAPL, MSTR, COIN, AMZN, MSFT, META, GOOGL, AMD, PLTR, MARA) and 24/7 Tokenized Stocks (rTokens) with crypto liquidity (BTC, ETH, SOL, NEAR, RNDR, AI meme-coins).
 You orchestrate the official Bitget Signal research skills:
 ${activeSkills.map((s) => `- bitget-signal:${s}`).join("\n")}
 

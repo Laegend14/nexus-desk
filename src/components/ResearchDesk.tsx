@@ -44,6 +44,8 @@ const PRESET_QUERIES = [
   "Correlate MSTR premium vs Bitcoin spot ETF inflows & liquidations.",
   "Evaluate TSLA weekend spread vs Asian EV battery supply chain & Doge sentiment.",
   "Analyze COIN weekend volume vs Ethereum gas fee velocity & L2 TVL.",
+  "Evaluate META open-source Llama AI momentum vs Solana high-throughput beta.",
+  "Analyze AMD AI accelerator demand vs decentralized compute tokens (RNDR / FET).",
 ];
 
 const FOLLOW_UP_SUGGESTIONS = [
@@ -53,7 +55,7 @@ const FOLLOW_UP_SUGGESTIONS = [
   "🌐 Check Asian semiconductor supply checks & wires",
 ];
 
-const TICKER_TABS = ["ALL", "NVDA", "TSLA", "AAPL", "MSTR", "COIN", "AMZN", "MSFT"];
+const TICKER_TABS = ["ALL", "NVDA", "TSLA", "AAPL", "MSTR", "COIN", "AMZN", "MSFT", "META", "GOOGL", "AMD", "PLTR", "MARA"];
 
 export const ResearchDesk: React.FC<ResearchDeskProps> = ({
   selectedTicker,
